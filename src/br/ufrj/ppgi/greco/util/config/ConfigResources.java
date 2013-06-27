@@ -12,7 +12,8 @@ public class ConfigResources
 {
 	
 	private String separator;
-	
+	private String separatorChar;
+	private String withHeader;
 	private String type;
 	private String uri;
 	private String rdfType;
@@ -82,6 +83,22 @@ public class ConfigResources
 	public void setRdfType(String rdfType)
 	{
 		this.rdfType = rdfType;
+	}
+
+	public String getSeparatorChar() {
+		return separatorChar;
+	}
+
+	public void setSeparatorChar(String separatorChar) {
+		this.separatorChar = separatorChar;
+	}
+
+	public String getWithHeader() {
+		return withHeader;
+	}
+
+	public void setWithHeader(String withHeader) {
+		this.withHeader = withHeader;
 	}
 
 	/**

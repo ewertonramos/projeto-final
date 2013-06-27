@@ -86,7 +86,10 @@ public class BootInitializer
 				Element resource = (Element) resourceConfig.item(i);
 				ConfigResources resourceConf = new ConfigResources();
 
+				resourceConf.setSeparatorChar(resource.getAttribute("separator-char"));
+				resourceConf.setWithHeader(resource.getAttribute("with-header"));
 				resourceConf.setType(resource.getAttribute("type"));
+				
 				resourceConf.setRdfType(resource.getElementsByTagName("rdf-type").item(0).getTextContent());
 				resourceConf.setUri(resource.getElementsByTagName("uri").item(0).getTextContent());
 

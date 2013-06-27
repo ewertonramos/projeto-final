@@ -60,16 +60,21 @@ public class DataTransformationJob implements Job
 		ArrayList<PackageDataTransformed> queueDTF = QueueDataTransformed.getQueue();
 
 		//XMLTransformation xmlTrans = new XMLTransformation();
-		CSVTransformation xmlTrans = new CSVTransformation();
+		CSVTransformation objectTrans = new CSVTransformation();
 		
 		for (ConfigTransformation conf : transfConfs)
 		{
-			HashMap<String, String> transformationsIndexedByLabel = conf.getTransformation();
-
-			ArrayList<HashMap<String, ArrayList<String>>> result = xmlTrans.getValue(data, conf.getGroup(), transformationsIndexedByLabel);
-
 			// getting resouce object
 			ConfigResources confRes = configResources.get(conf.getResourceURL());
+			
+			if(objectTrans instanceof CSVTransformation) {
+				objectTrans.setSeparatorChar(confRes.getSeparatorChar());
+				objectTrans.setWithHeader(confRes.getWithHeader());
+			}
+			
+			HashMap<String, String> transformationsIndexedByLabel = conf.getTransformation();
+			ArrayList<HashMap<String, ArrayList<String>>> result = objectTrans.getValue(data, conf.getGroup(), transformationsIndexedByLabel);
+
 
 			for (HashMap<String, ArrayList<String>> transformed : result)
 			{
