@@ -3,14 +3,12 @@ package br.ufrj.ppgi.greco.dataTransformation.services;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import au.com.bytecode.opencsv.CSVReader;
 
@@ -31,61 +29,56 @@ public class CSVTransformation {
 				separator = this.separatorChar.charAt(0);
 			}
 			CSVReader reader = new CSVReader(new StringReader(data), separator);
-			Map<Integer, Set<String>> csvGroup = new LinkedHashMap<Integer, Set<String>>(); // <columns, values>
-			Map<Integer, List<String>> csv = new LinkedHashMap<Integer, List<String>>();
+			
+			Map<String, List<ColunaValor<String, String>>> map = new LinkedHashMap<String, List<ColunaValor<String, String>>>();
 
-			if (this.withHeader!= null && "1".equals(this.withHeader)) {
+			if (this.withHeader!= null && "true".equals(this.withHeader)) {
 				String[] header = reader.readNext();
 
 			}
 			List<String> groupList = Arrays.asList(group.split(separator.toString()));
-			String[] lines = reader.readNext();
-			while (lines != null) {
-				for (int csvIndex = 1; csvIndex <= lines.length; csvIndex++) {
-					int arrayIndex = csvIndex-1;
-					String istring = "" + csvIndex;
-					if (groupList.contains(istring)) {
-
-						if (csvGroup.containsKey(csvIndex)) {
-							csvGroup.get(csvIndex).add(lines[arrayIndex]);
-						} else {
-							Set<String> values = new LinkedHashSet<String>();
-							values.add(lines[arrayIndex]);
-							csvGroup.put(csvIndex, values);
-						}
-					}
-					
-					if (csv.containsKey(csvIndex)) {
-						csv.get(csvIndex).add(lines[arrayIndex]);
-					} else {
-						List<String> values = new LinkedList<String>();
-						values.add(lines[arrayIndex]);
-						csv.put(csvIndex, values);
-					}
-
+			ArrayList<Integer> groupIndexList = groupAsIndexList(groupList);
+			
+			Collection<String> usedColumns = transformationsIndexedByLabel.keySet();
+			ArrayList<Integer> usedColumnsIndex= usedColumnsAsIndexList(usedColumns);
+			
+			
+			List<String> lineList = null;
+			String[] line = reader.readNext();
+			while (line != null) {
+				lineList = Arrays.asList(line);
+				
+				StringBuilder mapKey = new StringBuilder();
+				for (Integer groupIndexColumn : groupIndexList) {
+					mapKey.append(this.separatorChar).append(lineList.get(groupIndexColumn - 1));
 				}
-				lines = reader.readNext();
+				
+				ArrayList<ColunaValor<String, String>> values = new ArrayList<ColunaValor<String, String>>();
+				for (Integer usedColumnIndex : usedColumnsIndex) {
+					values.add(new ColunaValor<String, String>(usedColumnIndex.toString(), lineList.get(usedColumnIndex - 1)));
+				}
+				
+				if(map.containsKey(mapKey)) {
+					map.get(mapKey).addAll(values);
+				} else {
+					map.put(mapKey.substring(1), values);
+				}
+				
+				line = reader.readNext();
 			}
 			
-			for (Entry<Integer, Set<String>> csvGroupEntry : csvGroup.entrySet()) {
-				for (String groupValue : csvGroupEntry.getValue()) {
-					HashMap<String, ArrayList<String>> mapping = new HashMap<String, ArrayList<String>>();
-
-					for (Entry<String, String> entry : transformationsIndexedByLabel.entrySet()) {
-						ArrayList<String> values = new ArrayList<String>();
-						
-						List<String> value = csv.get(Integer.parseInt(entry.getKey()));
-						for(int i = 0; i < value.size(); i++) {
-							if(csv.get(csvGroupEntry.getKey()).get(i).equals(groupValue)) {
-								values.add(value.get(i));
-							}
+			for (Entry<String, List<ColunaValor<String, String>>> groupEntry : map.entrySet()) {
+				HashMap<String, ArrayList<String>> mapping = new HashMap<String, ArrayList<String>>();
+				for (Entry<String, String> transEntry : transformationsIndexedByLabel.entrySet()) {
+					ArrayList<String> values = new ArrayList<String>();
+					for (ColunaValor<String, String> groupValue : groupEntry.getValue()) {
+						if (groupValue.column.equals(transEntry.getKey())) {
+							values.add(groupValue.value);
 						}
-						//values.addAll(value);
-						mapping.put(entry.getValue(), values);
 					}
-
-					result.add(mapping);
+					mapping.put(transEntry.getValue(), values);
 				}
+				result.add(mapping);
 			}
 
 		} catch (Exception e) {
@@ -93,6 +86,22 @@ public class CSVTransformation {
 			e.printStackTrace();
 		}
 
+		return result;
+	}
+
+	private ArrayList<Integer> usedColumnsAsIndexList(Collection<String> usedColumns) {
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		for (String usedColumn : usedColumns) {
+			result.add(Integer.parseInt(usedColumn));
+		}
+		return result;
+	}
+
+	private ArrayList<Integer> groupAsIndexList(List<String> groupList) {
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		for (String groupItem : groupList) {
+			result.add(Integer.parseInt(groupItem));
+		}
 		return result;
 	}
 
@@ -110,5 +119,18 @@ public class CSVTransformation {
 
 	public void setWithHeader(String withHeader) {
 		this.withHeader = withHeader;
+	}
+	
+	private class ColunaValor<C, V>{
+		private final C column;
+		private final V value;
+		public ColunaValor(final C column, final V value) {
+			this.column = column;
+			this.value = value;
+		}
+		@Override
+		public String toString() {
+			return "<"+column+","+value+">";
+		}
 	}
 }

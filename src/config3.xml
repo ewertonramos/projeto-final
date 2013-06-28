@@ -9,7 +9,7 @@
 
 	<resources>
 		<!--
-		<resource id="1" type="static">
+		<resource id="1" type="static"  separator-char="," with-header="true">
 			<uri>http://greco.ppgi.ufrj.br/resource#convenios</uri>
 			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#convenio</rdf-type>
 			
@@ -21,7 +21,7 @@
 			</static-literals>
 
 			<dynamic-literals>
-				<dynamic-literal service-id="1" type="unique" separator-char="," with-header="1">
+				<dynamic-literal service-id="1" type="unique">
 					
 					<group>9</group>
 					
@@ -52,7 +52,7 @@
 		</resource>
 		 -->
 
-		<resource id="2" type="dynamic">
+		<resource id="2" type="dynamic"  separator-char="," with-header="true">
 			<uri>http://greco.ppgi.ufrj.br/resource#</uri>
 			<rdf-type>http://greco.ppgi.ufrj/ontology/concepts#idConvenio</rdf-type>
 
@@ -60,7 +60,7 @@
 			</static-literals>
 
 			<dynamic-literals>
-				<dynamic-literal service-id="1" separator-char="," with-header="1">
+				<dynamic-literal service-id="1">
 					<group>1</group>
 
 					<literal>
@@ -80,13 +80,14 @@
  -->
 				</dynamic-literal>
 			</dynamic-literals>
-
+<!-- 
 			<object-properties>
 				<object-property type="nondominant">
 					<property>http://greco.ppgi.ufrj/ontology/properties#hasAlgumaProperty</property>
 					<object-uri>http://greco.ppgi.ufrj.br/resource#objecturi_1</object-uri>
 				</object-property>
 			</object-properties>
+ -->
 
 		</resource>
 
