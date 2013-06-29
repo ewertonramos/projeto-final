@@ -2,27 +2,28 @@
 	<services>
 		<service id="1">
 			<url>http://api.convenios.gov.br/siconv/v1/consulta/convenios.csv</url>
-			<refresh-rate>6000</refresh-rate>
+			<refresh-rate>50</refresh-rate>
 			<return-type>csv</return-type>
 		</service>
 	</services>
-
 	<resources>
-		<!--
+<!-- 
 		<resource id="1" type="static"  separator-char="," with-header="true">
-			<uri>http://greco.ppgi.ufrj.br/resource#convenios</uri>
-			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#convenio</rdf-type>
+			<uri>http://greco.ppgi.ufrj.br/resource#Robinho</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#Pessoa</rdf-type>
 			
 			<static-literals>
 				<static-literal>
-					<value>Globo</value>
-					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasChannel</parent-property>
+					<value>Ewerton Ramos</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasNome</parent-property>
 				</static-literal>
 			</static-literals>
 
 			<dynamic-literals>
-				<dynamic-literal service-id="1" type="unique">
-					
+				<dynamic-literal service-id="1" >
+				
+				 type="unique"
+				
 					<group>9</group>
 					
 					<literal>
@@ -31,27 +32,26 @@
 					</literal>
 					
 					<literal>
-						<value><![CDATA[10]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasObjetoResumido</parent-property>
+						<value><![CDATA[8]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasJustificativa</parent-property>
 					</literal>
 					
 					<literal>
-						<value><![CDATA[15]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasValorGlobal</parent-property>
+						<value><![CDATA[7]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasId</parent-property>
 					</literal>
 				</dynamic-literal>
 			</dynamic-literals>
 
 			<object-properties>
 				<object-property type="dominant">
-					<property>http://greco.ppgi.ufrj/ontology/properties#Convenio</property>
-					<object-uri>http://dbpedia.org/resource/Convenio</object-uri>
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasAlgumaProperty</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#object_uri</object-uri>
 				</object-property>
 			</object-properties>
 
 		</resource>
-		 -->
-
+ -->		
 		<resource id="2" type="dynamic"  separator-char="," with-header="true">
 			<uri>http://greco.ppgi.ufrj.br/resource#</uri>
 			<rdf-type>http://greco.ppgi.ufrj/ontology/concepts#idConvenio</rdf-type>
@@ -61,13 +61,12 @@
 
 			<dynamic-literals>
 				<dynamic-literal service-id="1">
-					<group>1</group>
+					<group>1,9</group>
 
 					<literal>
 						<value><![CDATA[1]]></value>
 						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasId</parent-property>
 					</literal>
-<!-- 
 					<literal>
 						<value><![CDATA[3]]></value>
 						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasDataAssinatura</parent-property>
@@ -77,19 +76,16 @@
 						<value><![CDATA[14]]></value>
 						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasValorContrapartida</parent-property>
 					</literal>
- -->
 				</dynamic-literal>
 			</dynamic-literals>
-<!-- 
-			<object-properties>
+			<!-- 
+ 			<object-properties>
 				<object-property type="nondominant">
 					<property>http://greco.ppgi.ufrj/ontology/properties#hasAlgumaProperty</property>
-					<object-uri>http://greco.ppgi.ufrj.br/resource#objecturi_1</object-uri>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#object_uri</object-uri>
 				</object-property>
-			</object-properties>
- -->
-
+			</object-properties> 
+			 -->
 		</resource>
-
 	</resources>
 </config>

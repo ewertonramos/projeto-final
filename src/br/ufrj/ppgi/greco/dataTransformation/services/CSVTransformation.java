@@ -58,10 +58,11 @@ public class CSVTransformation {
 					values.add(new ColunaValor<String, String>(usedColumnIndex.toString(), lineList.get(usedColumnIndex - 1)));
 				}
 				
-				if(map.containsKey(mapKey)) {
-					map.get(mapKey).addAll(values);
+				String key = mapKey.substring(1);
+				if(map.containsKey(key)) {
+					map.get(key).addAll(values);
 				} else {
-					map.put(mapKey.substring(1), values);
+					map.put(key, values);
 				}
 				
 				line = reader.readNext();
