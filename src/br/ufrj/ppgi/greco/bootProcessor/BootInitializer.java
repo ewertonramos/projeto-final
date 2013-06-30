@@ -90,6 +90,18 @@ public class BootInitializer
 				resourceConf.setWithHeader(resource.getAttribute("with-header"));
 				resourceConf.setType(resource.getAttribute("type"));
 				
+				if(resourceConf.getWithHeader() != null && ("true".equalsIgnoreCase(resourceConf.getWithHeader()) || "1".equals(resourceConf))) {
+					NodeList headerList = resource.getElementsByTagName("headers");
+					NodeList headerConfig = ((Element)headerList.item(0)).getElementsByTagName("header");
+					for (int j = 0; j < headerConfig.getLength(); j++)
+					{
+						Element staticLiteral = (Element) headerConfig.item(j);
+						String index = staticLiteral.getElementsByTagName("index").item(0).getTextContent();
+						String name = staticLiteral.getElementsByTagName("name").item(0).getTextContent();
+						resourceConf.addHeader(index, name);
+					}
+				}
+				
 				resourceConf.setRdfType(resource.getElementsByTagName("rdf-type").item(0).getTextContent());
 				resourceConf.setUri(resource.getElementsByTagName("uri").item(0).getTextContent());
 

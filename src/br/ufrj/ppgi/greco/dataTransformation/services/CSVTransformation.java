@@ -16,6 +16,7 @@ public class CSVTransformation {
 
 	private String separatorChar;
 	private String withHeader;
+	private Map<String, String> headers;
 
 	public CSVTransformation() {
 		super();
@@ -32,15 +33,14 @@ public class CSVTransformation {
 			
 			Map<String, List<ColunaValor<String, String>>> map = new LinkedHashMap<String, List<ColunaValor<String, String>>>();
 
-			if (this.withHeader!= null && "true".equals(this.withHeader)) {
-				String[] header = reader.readNext();
-
+			if (hasHeader()) {
+				configureHeader(reader.readNext());
 			}
 			List<String> groupList = Arrays.asList(group.split(separator.toString()));
-			ArrayList<Integer> groupIndexList = groupAsIndexList(groupList);
+			ArrayList<Integer> groupIndexList = asColumnIndexList(groupList);
 			
 			Collection<String> usedColumns = transformationsIndexedByLabel.keySet();
-			ArrayList<Integer> usedColumnsIndex= usedColumnsAsIndexList(usedColumns);
+			ArrayList<Integer> usedColumnsIndex= asColumnIndexList(usedColumns);
 			
 			
 			List<String> lineList = null;
@@ -67,13 +67,13 @@ public class CSVTransformation {
 				
 				line = reader.readNext();
 			}
-			
+			//Transform
 			for (Entry<String, List<ColunaValor<String, String>>> groupEntry : map.entrySet()) {
 				HashMap<String, ArrayList<String>> mapping = new HashMap<String, ArrayList<String>>();
 				for (Entry<String, String> transEntry : transformationsIndexedByLabel.entrySet()) {
 					ArrayList<String> values = new ArrayList<String>();
 					for (ColunaValor<String, String> groupValue : groupEntry.getValue()) {
-						if (groupValue.column.equals(transEntry.getKey())) {
+						if (groupValue.column.equals(asIndex(transEntry.getKey()).toString())) {
 							values.add(groupValue.value);
 						}
 					}
@@ -90,20 +90,45 @@ public class CSVTransformation {
 		return result;
 	}
 
-	private ArrayList<Integer> usedColumnsAsIndexList(Collection<String> usedColumns) {
+	private boolean hasHeader() {
+		return this.withHeader!= null && ("true".equalsIgnoreCase(this.withHeader) || "1".equals(this.withHeader));
+	}
+	
+	private void configureHeader(String[] header) {
+		Map<String, String> newHeader = new HashMap<String, String>();
+		for (Entry<String, String> entry : this.headers.entrySet()) {
+			newHeader.put(entry.getKey(), entry.getValue());
+			newHeader.put(entry.getValue(), entry.getKey());
+		}
+		this.headers = newHeader;
+	}
+
+	private ArrayList<Integer> asColumnIndexList(Collection<String> comumnList) {
 		ArrayList<Integer> result = new ArrayList<Integer>();
-		for (String usedColumn : usedColumns) {
-			result.add(Integer.parseInt(usedColumn));
+		if(hasHeader()){
+			for (String groupItem : comumnList) {
+				Integer hindex = asIndex(groupItem);
+				result.add(hindex);
+			}
+		} else {
+			for (String groupItem : comumnList) {
+				result.add(Integer.parseInt(groupItem));
+			}
 		}
 		return result;
 	}
-
-	private ArrayList<Integer> groupAsIndexList(List<String> groupList) {
-		ArrayList<Integer> result = new ArrayList<Integer>();
-		for (String groupItem : groupList) {
-			result.add(Integer.parseInt(groupItem));
+	
+	private Integer asIndex(String header) {
+		String h = this.headers.get(header);
+		 Integer hindex = null;
+		if(h != null) {
+			try {
+				hindex = Integer.parseInt(h);
+			} catch (NumberFormatException e) {
+				hindex = Integer.parseInt(header);
+			}
 		}
-		return result;
+		return hindex;
 	}
 
 	public String getSeparatorChar() {
@@ -122,6 +147,16 @@ public class CSVTransformation {
 		this.withHeader = withHeader;
 	}
 	
+
+	public Map<String, String> getHeaders() {
+		return headers;
+	}
+
+	public void setHeaders(Map<String, String> headers) {
+		this.headers = headers;
+	}
+
+
 	private class ColunaValor<C, V>{
 		private final C column;
 		private final V value;

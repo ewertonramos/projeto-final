@@ -1,6 +1,8 @@
 package br.ufrj.ppgi.greco.util.config;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -14,6 +16,7 @@ public class ConfigResources
 	private String separator;
 	private String separatorChar;
 	private String withHeader;
+	private Map<String, String> headers;
 	private String type;
 	private String uri;
 	private String rdfType;
@@ -101,6 +104,23 @@ public class ConfigResources
 		this.withHeader = withHeader;
 	}
 
+	public Map<String, String> getHeaders() {
+		return headers;
+	}
+
+	public void setHeaders(Map<String, String> headers) {
+		this.headers = headers;
+	}
+	
+	public void addHeader(String index, String name) {
+		if(this.headers == null) {
+			this.headers = new HashMap<String, String>();
+			this.headers.put(index, name);
+		} else {
+			this.headers.put(index, name);
+		}
+	}
+	
 	/**
 	 *Define as propriedades de dados estáticas do recurso
 	 *@param parentProperty propriedade

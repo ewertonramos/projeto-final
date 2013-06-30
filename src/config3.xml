@@ -2,15 +2,66 @@
 	<services>
 		<service id="1">
 			<url>http://api.convenios.gov.br/siconv/v1/consulta/convenios.csv</url>
-			<refresh-rate>50</refresh-rate>
+			<refresh-rate>1800</refresh-rate>
 			<return-type>csv</return-type>
 		</service>
 	</services>
+	
 	<resources>
-<!-- 
 		<resource id="1" type="static"  separator-char="," with-header="true">
 			<uri>http://greco.ppgi.ufrj.br/resource#Robinho</uri>
 			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#Pessoa</rdf-type>
+			
+			<headers>
+				<header>
+					<index>1</index>
+					<name>id</name>
+				</header>
+				<header>
+					<index>2</index>
+					<name>uri</name>
+				</header>
+				<header>
+					<index>3</index>
+					<name>data_assinatura</name>
+				</header>
+				<header>
+					<index>4</index>
+					<name>data_fim_vigencia</name>
+				</header>
+				<header>
+					<index>5</index>
+					<name>data_inicio_vigencia</name>
+				</header>
+				<header>
+					<index>6</index>
+					<name>data_publicacao</name>
+				</header>
+				<header>
+					<index>8</index>
+					<name>justificativa_resumida</name>
+				</header>
+				<header>
+					<index>9</index>
+					<name>modalidade</name>
+				</header>
+				<header>
+					<index>10</index>
+					<name>objeto_resumido</name>
+				</header>
+				<header>
+					<index>11</index>
+					<name>orgao_concedente</name>
+				</header>
+				<header>
+					<index>12</index>
+					<name>proponente</name>
+				</header>
+				<header>
+					<index>13</index>
+					<name>situacao</name>
+				</header>
+			</headers>
 			
 			<static-literals>
 				<static-literal>
@@ -21,23 +72,21 @@
 
 			<dynamic-literals>
 				<dynamic-literal service-id="1" >
-				
-				 type="unique"
-				
-					<group>9</group>
+				<!-- type="unique" -->
+					<group>modalidade</group>
 					
 					<literal>
-						<value><![CDATA[9]]></value>
+						<value><![CDATA[modalidade]]></value>
 						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasModalidade</parent-property>
 					</literal>
 					
 					<literal>
-						<value><![CDATA[8]]></value>
+						<value><![CDATA[justificativa_resumida]]></value>
 						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasJustificativa</parent-property>
 					</literal>
 					
 					<literal>
-						<value><![CDATA[7]]></value>
+						<value><![CDATA[id]]></value>
 						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasId</parent-property>
 					</literal>
 				</dynamic-literal>
@@ -51,7 +100,7 @@
 			</object-properties>
 
 		</resource>
- -->		
+			<!-- 
 		<resource id="2" type="dynamic"  separator-char="," with-header="true">
 			<uri>http://greco.ppgi.ufrj.br/resource#</uri>
 			<rdf-type>http://greco.ppgi.ufrj/ontology/concepts#idConvenio</rdf-type>
@@ -78,14 +127,13 @@
 					</literal>
 				</dynamic-literal>
 			</dynamic-literals>
-			<!-- 
  			<object-properties>
 				<object-property type="nondominant">
 					<property>http://greco.ppgi.ufrj/ontology/properties#hasAlgumaProperty</property>
 					<object-uri>http://greco.ppgi.ufrj.br/resource#object_uri</object-uri>
 				</object-property>
 			</object-properties> 
-			 -->
 		</resource>
+			 -->
 	</resources>
 </config>

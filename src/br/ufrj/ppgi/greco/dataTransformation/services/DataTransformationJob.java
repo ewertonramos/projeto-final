@@ -70,6 +70,7 @@ public class DataTransformationJob implements Job
 			if(objectTrans instanceof CSVTransformation) {
 				objectTrans.setSeparatorChar(confRes.getSeparatorChar());
 				objectTrans.setWithHeader(confRes.getWithHeader());
+				objectTrans.setHeaders(confRes.getHeaders());
 			}
 			
 			HashMap<String, String> transformationsIndexedByLabel = conf.getTransformation();
