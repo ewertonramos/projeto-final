@@ -40,10 +40,13 @@ public class SemanticHubServer
 		
 		WebServer.startWebServer(8080,handlers);
 */
-		
+		String file = "C:/workspaces/ufrj/semantichub-server/src/config3.xml";
+		if(args.length > 0) {
+			file = args[0];
+		}
 		SemanticHubServer shs = new SemanticHubServer();
 		//shs.start("/Users/fabricio/Documents/mestrado/configCETIC.xml");
-		shs.start("C:/workspaces/ufrj/semantichub-server/src/config3.xml");
+		shs.start(file);
 	}
 	
 	/**
