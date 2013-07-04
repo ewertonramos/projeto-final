@@ -1,0 +1,148 @@
+<config>
+	<services>
+		<service id="1">
+			<url>http://api.dataprev.gov.br/previdencia/anuario/2009/acidentes-do-trabalho.csv</url>
+			<refresh-rate>1800</refresh-rate>
+			<return-type>csv</return-type>
+		</service>
+	</services>
+	
+	<resources>
+		<resource id="1" type="static"  separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Estado</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#Estado</rdf-type>
+			
+			<headers>
+				<header>
+					<index>4</index>
+					<name>uf</name>
+				</header>
+			</headers>
+			
+			<static-literals>
+				<static-literal>
+					<value>Unidades Federativas do Brasil</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasDescricao</parent-property>
+				</static-literal>
+			</static-literals>
+
+			<dynamic-literals>
+				<dynamic-literal service-id="1" >
+				<!-- type="unique" -->
+					<group>uf</group>
+					
+					<literal>
+						<value><![CDATA[uf]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasUF</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+<!-- 
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasAlgumaProperty</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#object_uri</object-uri>
+				</object-property>
+			</object-properties>
+ -->
+
+		</resource>
+		
+		<resource id="2" type="static"  separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Municipio</uri>
+			<rdf-type>http://greco.ppgi.ufrj/ontology/concepts#Municipio</rdf-type>
+			
+			<headers>
+				<header>
+					<index>2</index>
+					<name>municipio_id</name>
+				</header>
+				<header>
+					<index>3</index>
+					<name>municipio_nome</name>
+				</header>
+				<header>
+					<index>4</index>
+					<name>uf</name>
+				</header>
+			</headers>
+			
+			<static-literals>
+				<static-literal>
+					<value>Divisão territorial dos Estados do Brasil</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasDescricao</parent-property>
+				</static-literal>
+			</static-literals>
+
+			<dynamic-literals>
+				<dynamic-literal service-id="1">
+					<group>municipio_id,municipio_nome</group>
+
+					<literal>
+						<value><![CDATA[municipio_id]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasId</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[municipio_nome]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasNome</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[uf]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasUF</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<!-- 
+ 			<object-properties>
+				<object-property type="nondominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasAlgumaProperty</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#object_uri</object-uri>
+				</object-property>
+			</object-properties> 
+			 -->
+		</resource>
+		
+		<!-- TODO -->
+		<resource id="3" type="static"  separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#IBGE</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#IBGE</rdf-type>
+			
+			<headers>
+				<header>
+					<index>4</index>
+					<name>uf</name>
+				</header>
+			</headers>
+			
+			<static-literals>
+				<static-literal>
+					<value>Instituto Brasileiro de Geografia e Estatística</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasNome</parent-property>
+				</static-literal>
+			</static-literals>
+
+			<dynamic-literals>
+				<dynamic-literal service-id="1" >
+				<!-- type="unique" -->
+					<group>uf</group>
+					
+					<literal>
+						<value><![CDATA[uf]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasUF</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+<!-- 
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasAlgumaProperty</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#object_uri</object-uri>
+				</object-property>
+			</object-properties>
+ -->
+
+		</resource>
+		
+		
+	</resources>
+</config>

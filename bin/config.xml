@@ -1,0 +1,103 @@
+<config>
+
+<services>
+	
+	<service id="1">
+		<url>http://search.twitter.com/search.atom?q=avenida%20brasil&#38;rpp=10</url>
+		<refresh-rate>10</refresh-rate>
+		<return-type>xml</return-type>
+	</service>
+
+</services>
+
+
+
+<resources>
+	
+	<resource id="1" type="static">
+		<uri>http://greco.ppgi.ufrj.br/resource#123</uri>
+		<rdf-type>http://greco.ppgi.ufrj/ontology/concepts#novela </rdf-type>
+	
+		<static-literals>
+			<static-literal>
+				<value>globo</value>
+				<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasChannel</parent-property>
+			</static-literal>
+		</static-literals>
+
+
+		<dynamic-literals>
+			<dynamic-literal service-id="1" type="unique">
+					<group>/feed</group>
+					<literal>
+						<value><![CDATA[/updated/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasUpdatedTimeStamp</parent-property>
+					</literal>
+
+			
+			</dynamic-literal>
+
+
+		</dynamic-literals>
+
+
+		<object-properties>			
+			<object-property type="dominant">
+				<property>http://greco.ppgi.ufrj/ontology/properties#Description</property>
+				<object-uri>http://dbpedia.org/resource/Novela</object-uri>	
+			</object-property>
+		</object-properties>
+
+
+	</resource>
+
+
+
+	<resource id="2" type="dynamic">
+
+		<uri>http://greco.ppgi.ufrj.br/resource#</uri>
+		<rdf-type>http://greco.ppgi.ufrj/ontology/concepts#twitter</rdf-type>
+	
+
+		<static-literals>	
+		</static-literals>
+
+		<dynamic-literals>
+			
+			<dynamic-literal service-id="1">
+					<group>//entry</group>
+
+					<literal>
+						<value><![CDATA[/author/name/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasAuthor</parent-property>
+					</literal>
+
+					<literal>
+						<value><![CDATA[/title/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasContent</parent-property>
+					</literal>
+
+			</dynamic-literal>
+
+		</dynamic-literals>
+
+
+		<object-properties>
+			
+			<object-property type="nondominant">
+				<property>http://greco.ppgi.ufrj/ontology/properties#hasMessage</property>
+				<object-uri>http://greco.ppgi.ufrj.br/resource#123</object-uri>	
+			</object-property>
+
+		</object-properties>
+
+
+	</resource>
+
+
+</resources>
+
+
+
+
+</config>
