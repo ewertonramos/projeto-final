@@ -5,6 +5,11 @@
 			<refresh-rate>1800</refresh-rate>
 			<return-type>csv</return-type>
 		</service>
+		<service id="2">
+			<url>http://api.convenios.gov.br/siconv/v1/consulta/municipios.csv?</url>
+			<refresh-rate>1800</refresh-rate>
+			<return-type>csv</return-type>
+		</service>
 	</services>
 	
 	<resources>
@@ -12,12 +17,6 @@
 			<uri>http://greco.ppgi.ufrj.br/resource#Estado</uri>
 			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#Estado</rdf-type>
 			
-			<headers>
-				<header>
-					<index>4</index>
-					<name>uf</name>
-				</header>
-			</headers>
 			
 			<static-literals>
 				<static-literal>
@@ -25,15 +24,37 @@
 					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasDescricao</parent-property>
 				</static-literal>
 			</static-literals>
+			<headers>
+				<header>
+					<index>8</index>
+					<name>uf</name>
+				</header>
+				<header>
+					<index>6</index>
+					<name>uf_nome</name>
+				</header>
+				<header>
+					<index>7</index>
+					<name>uf_regiao</name>
+				</header>
+			</headers>
 
 			<dynamic-literals>
-				<dynamic-literal service-id="1" >
+				<dynamic-literal service-id="2" >
 				<!-- type="unique" -->
 					<group>uf</group>
 					
 					<literal>
 						<value><![CDATA[uf]]></value>
 						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasUF</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[uf_nome]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasNome</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[uf_regiao]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasRegiao</parent-property>
 					</literal>
 				</dynamic-literal>
 			</dynamic-literals>
@@ -46,15 +67,15 @@
 			<headers>
 				<header>
 					<index>2</index>
-					<name>municipio_id</name>
+					<name>municipio_uri</name>
 				</header>
 				<header>
-					<index>3</index>
+					<index>5</index>
 					<name>municipio_nome</name>
 				</header>
 				<header>
-					<index>4</index>
-					<name>uf</name>
+					<index>7</index>
+					<name>uf_regiao</name>
 				</header>
 			</headers>
 			
@@ -66,20 +87,20 @@
 			</static-literals>
 
 			<dynamic-literals>
-				<dynamic-literal service-id="1">
-					<group>municipio_id,municipio_nome</group>
+				<dynamic-literal service-id="2">
+					<group>municipio_nome,uf_regiao</group>
 
 					<literal>
-						<value><![CDATA[municipio_id]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasId</parent-property>
+						<value><![CDATA[municipio_uri]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasURI</parent-property>
 					</literal>
 					<literal>
 						<value><![CDATA[municipio_nome]]></value>
 						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasNome</parent-property>
 					</literal>
 					<literal>
-						<value><![CDATA[uf]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasUF</parent-property>
+						<value><![CDATA[uf_regiao]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasRegiao</parent-property>
 					</literal>
 				</dynamic-literal>
 			</dynamic-literals>
@@ -192,7 +213,7 @@
 					</literal>
 					<literal>
 						<value><![CDATA[quantidade_obtidos]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasQuantidadeObtidos</parent-property>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasQuantidadeObitos</parent-property>
 					</literal>
 					<literal>
 						<value><![CDATA[acidentes_sem_cat]]></value>
@@ -203,7 +224,7 @@
 			
 			<object-properties>
 				<object-property type="nondominant">
-					<property>http://greco.ppgi.ufrj/ontology/properties#hasEstatistica</property>
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasOcorrencia</property>
 					<object-uri>http://greco.ppgi.ufrj.br/resource#Municipio</object-uri>
 				</object-property>
 			</object-properties> 
