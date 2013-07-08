@@ -104,8 +104,7 @@
 					</literal>
 				</dynamic-literal>
 			</dynamic-literals>
-			<!-- 
-			 -->
+			
  			<object-properties>
 				<object-property type="nondominant">
 					<property>http://greco.ppgi.ufrj/ontology/properties#hasSubDivisao</property>
@@ -114,7 +113,6 @@
 			</object-properties> 
 		</resource>
 		
-		<!-- TODO -->
 		<resource id="3" type="static"  separator-char="," with-header="true">
 			<uri>http://greco.ppgi.ufrj.br/resource#IBGE</uri>
 			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#IBGE</rdf-type>
@@ -140,13 +138,9 @@
 		
 		<resource id="4" type="dynamic"  separator-char="," with-header="true">
 			<uri>http://greco.ppgi.ufrj.br/resource/AcidenteDeTrabalho#</uri>
-			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#AcidenteDeTrabalho</rdf-type>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#AcidentesTrabalho</rdf-type>
 			
 			<static-literals>
-				<static-literal>
-					<value>Instituto Brasileiro de Geografia e Estatística</value>
-					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasNome</parent-property>
-				</static-literal>
 			</static-literals>
 			
 			<headers>
