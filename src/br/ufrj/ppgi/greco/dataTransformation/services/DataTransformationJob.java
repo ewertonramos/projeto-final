@@ -8,8 +8,10 @@ import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
+import br.ufrj.ppgi.greco.dataTransformation.interfaces.ITransformation;
 import br.ufrj.ppgi.greco.util.config.ConfigResources;
 import br.ufrj.ppgi.greco.util.config.ConfigTransformation;
+import br.ufrj.ppgi.greco.util.constants.TransformationConstants;
 import br.ufrj.ppgi.greco.util.pkg.PackageDataCapture;
 import br.ufrj.ppgi.greco.util.pkg.PackageDataTransformed;
 import br.ufrj.ppgi.greco.util.queue.QueueDataCapture;
@@ -60,17 +62,21 @@ public class DataTransformationJob implements Job
 		ArrayList<PackageDataTransformed> queueDTF = QueueDataTransformed.getQueue();
 
 		//XMLTransformation xmlTrans = new XMLTransformation();
-		CSVTransformation objectTrans = new CSVTransformation();
+		ITransformation objectTrans = null;
 		
 		for (ConfigTransformation conf : transfConfs)
 		{
 			// getting resouce object
 			ConfigResources confRes = configResources.get(conf.getResourceURL());
 			
-			if(objectTrans instanceof CSVTransformation) {
-				objectTrans.setSeparatorChar(confRes.getSeparatorChar());
-				objectTrans.setWithHeader(confRes.getWithHeader());
-				objectTrans.setHeaders(confRes.getHeaders());
+			if (TransformationConstants.XML.equalsIgnoreCase(conf.getFormatType())) {
+				objectTrans = new XMLTransformation();
+			} else if (TransformationConstants.CSV.equalsIgnoreCase(conf.getFormatType())) {
+				objectTrans = new CSVTransformation(confRes.getSeparatorChar(), confRes.getWithHeader(), confRes.getHeaders());
+			} else if (TransformationConstants.JSON.equalsIgnoreCase(conf.getFormatType())) {
+				objectTrans = new JSONTransformation();
+			} else {
+				throw new IllegalStateException("Unsupported service type. Only XML, JSON or CSV");
 			}
 			
 			HashMap<String, String> transformationsIndexedByLabel = conf.getTransformation();

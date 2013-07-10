@@ -16,25 +16,24 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+import br.ufrj.ppgi.greco.dataTransformation.interfaces.ITransformation;
+
 
 /**
  * Gerenciador do fluxo de transformação de dados em XML 
  * @author Fabrício Firmino de Faria
  * @version 1.0
  */
-public class XMLTransformation
-{
+public class XMLTransformation implements ITransformation {
 
 	DocumentBuilderFactory docFactory;
 	XPathFactory xPathfactory;
 
 	
-	public XMLTransformation()
-	{
+	public XMLTransformation() {
 		this.docFactory = DocumentBuilderFactory.newInstance();
 		this.docFactory.setNamespaceAware(true);
 		this.xPathfactory = XPathFactory.newInstance();
-
 	}
 
 	/**
@@ -44,12 +43,11 @@ public class XMLTransformation
 	 *@param transformation conjunto de transformações a serem aplicados a cada item de grupo
 	 *@return ArrayList<HashMap<String, ArrayList<String>>> lista de dados extraídos indexados pela URI do serviço de origem
 	 */
-	public ArrayList<HashMap<String, ArrayList<String>>> getValue(String xmlInput , String groupPath , HashMap<String, String> transformation)
-	{
+	@Override
+	public ArrayList<HashMap<String, ArrayList<String>>> getValue(String xmlInput , String groupPath , HashMap<String, String> transformation) {
 		ArrayList<HashMap<String, ArrayList<String>>> result = new ArrayList<HashMap<String, ArrayList<String>>>();
 
-		try
-		{
+		try {
 			// System.out.println("Com: "+xmlInput);
 			xmlInput = xmlInput.replaceAll("xmlns=\"(.*?)\"", "");
 			// System.out.println("Sem: "+xmlInput);
@@ -64,23 +62,22 @@ public class XMLTransformation
 			XPath xpath = factory.newXPath();
 
 			XPathExpression expr = xpath.compile(groupPath);
-			NodeList nodes = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
+			NodeList nodes = (NodeList) expr.evaluate(doc,
+					XPathConstants.NODESET);
 
 			// for each group
-			for (int i = 0; i < nodes.getLength(); i++)
-			{
+			for (int i = 0; i < nodes.getLength(); i++) {
 				Element e = (Element) nodes.item(i);
 				HashMap<String, ArrayList<String>> res = new HashMap<String, ArrayList<String>>();
 
 				// for each transformation path
-				for (String transfPath : transformation.keySet())
-				{
+				for (String transfPath : transformation.keySet()) {
 					expr = xpath.compile(transfPath);
-					NodeList nodes2 = (NodeList) expr.evaluate(e, XPathConstants.NODESET);
+					NodeList nodes2 = (NodeList) expr.evaluate(e,
+							XPathConstants.NODESET);
 
 					ArrayList<String> dataValues = new ArrayList<String>();
-					for (int j = 0; j < nodes2.getLength(); j++)
-					{
+					for (int j = 0; j < nodes2.getLength(); j++) {
 						dataValues.add(nodes2.item(j).getNodeValue());
 					}
 					res.put(transformation.get(transfPath), dataValues);
@@ -90,9 +87,7 @@ public class XMLTransformation
 
 			}
 
-		} 
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(0);
 		}

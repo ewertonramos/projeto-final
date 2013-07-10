@@ -10,18 +10,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import br.ufrj.ppgi.greco.dataTransformation.interfaces.ITransformation;
+
 import au.com.bytecode.opencsv.CSVReader;
 
-public class CSVTransformation {
+public class CSVTransformation implements ITransformation {
 
 	private String separatorChar;
 	private String withHeader;
 	private Map<String, String> headers;
 
-	public CSVTransformation() {
-		super();
+	public CSVTransformation(String separatorChar, String withHeader, Map<String, String> headers) {
+		this.separatorChar = separatorChar;
+		this.withHeader = withHeader;
+		this.headers = headers;
 	}
 
+	@Override
 	public ArrayList<HashMap<String, ArrayList<String>>> getValue(String data, String group, HashMap<String, String> transformationsIndexedByLabel) {
 		ArrayList<HashMap<String, ArrayList<String>>> result = new ArrayList<HashMap<String, ArrayList<String>>>();
 		try {
@@ -135,27 +140,13 @@ public class CSVTransformation {
 		return separatorChar;
 	}
 
-	public void setSeparatorChar(String separatorChar) {
-		this.separatorChar = separatorChar;
-	}
-
 	public String getWithHeader() {
 		return withHeader;
 	}
 
-	public void setWithHeader(String withHeader) {
-		this.withHeader = withHeader;
-	}
-	
-
 	public Map<String, String> getHeaders() {
 		return headers;
 	}
-
-	public void setHeaders(Map<String, String> headers) {
-		this.headers = headers;
-	}
-
 
 	private class ColunaValor<C, V>{
 		private final C column;
