@@ -13,6 +13,8 @@ import org.openrdf.query.TupleQuery;
 import org.openrdf.query.TupleQueryResult;
 import org.openrdf.repository.RepositoryConnection;
 import org.openrdf.repository.RepositoryException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import br.ufrj.ppgi.greco.util.db.UtilTripleStoreConnection;
 
@@ -23,9 +25,9 @@ import br.ufrj.ppgi.greco.util.db.UtilTripleStoreConnection;
  * @author Fabrício Firmino de Faria
  * @version 1.0
  */
-public class TripleStoreDriver
-{
-
+public class TripleStoreDriver {
+	static final Logger log = LoggerFactory.getLogger(TripleStoreDriver.class);
+	
 	/**
 	 *Remove uma tripla no formato sujeito-predicado-objeto
 	 *@param sub sujeito
@@ -150,10 +152,11 @@ public class TripleStoreDriver
 				}
 				resList.add(hm);
 			}
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-			System.out.println("runSPARQL: "+ qs);
+		} catch (Exception e) {
+			log.error("Error", e);
+			//e.printStackTrace();
+			//System.out.println("runSPARQL: "+ qs);
+			log.debug("runSPARQL: "+ qs);
 			System.exit(0);
 		}
 
@@ -188,10 +191,11 @@ public class TripleStoreDriver
 				}
 			}
 
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-			System.out.println("sparqlExecGetLiteral: "+ sparql);
+		} catch (Exception e) {
+			log.error("Problem.", e);
+			//e.printStackTrace();
+			log.error("sparqlExecGetLiteral: "+ sparql);
+			//System.out.println("sparqlExecGetLiteral: "+ sparql);
 			System.exit(0);
 		}
 
@@ -208,7 +212,10 @@ public class TripleStoreDriver
 	 */
 	public static void insertTriplesSPO(String sub , String pred , String obj)
 	{
-		System.out.println("SPO: " + sub + " - " + pred + " - " + obj);
+		//System.out.println("SPO: " + sub + " - " + pred + " - " + obj);
+		if(log.isDebugEnabled()) {
+			log.debug("SPO: " + sub + " - " + pred + " - " + obj);
+		}
 		try
 		{
 			RepositoryConnection conn = UtilTripleStoreConnection.getConnection();
@@ -218,10 +225,11 @@ public class TripleStoreDriver
 			URI object = f.createURI(obj);
 			conn.add(subject, property, object);
 
-		} catch (RepositoryException e)
-		{
-			e.printStackTrace();
-			System.out.println("insertTriplesSPO: "+ sub+" "+pred+" "+obj);
+		} catch (RepositoryException e) {
+			log.error("Problem.", e);
+			//e.printStackTrace();
+			log.error("insertTriplesSPO: "+ sub+" "+pred+" "+obj);
+			//System.out.println("insertTriplesSPO: "+ sub+" "+pred+" "+obj);
 			System.exit(0);
 		}
 	}
@@ -233,9 +241,11 @@ public class TripleStoreDriver
 	 *@param pred predicado
 	 *@param lit literal
 	 */
-	public static void insertTriplesSPL(String sub , String pred , String lit)
-	{
-		System.out.println("SPL:" + sub + " - " + pred + " - " + lit);
+	public static void insertTriplesSPL(String sub , String pred , String lit) {
+		if(log.isDebugEnabled()) {
+			log.debug("SPL:" + sub + " - " + pred + " - " + lit);
+		}
+		//System.out.println("SPL:" + sub + " - " + pred + " - " + lit);
 		try
 		{
 			RepositoryConnection conn = UtilTripleStoreConnection.getConnection();
@@ -247,10 +257,11 @@ public class TripleStoreDriver
 
 			conn.add(subject, property, literal);
 
-		} catch (RepositoryException e)
-		{
-			e.printStackTrace();
-			System.out.println("insertTriplesSPL: "+ sub+" "+pred+" "+lit);
+		} catch (RepositoryException e) {
+			log.error("Insetion problem.", e);
+			//e.printStackTrace();
+			//System.out.println("insertTriplesSPL: "+ sub+" "+pred+" "+lit);
+			log.error("insertTriplesSPL: "+ sub+" "+pred+" "+lit);
 			System.exit(0);
 		}
 	}
@@ -262,9 +273,11 @@ public class TripleStoreDriver
 	 *@param pred predicado
 	 *@param lit literal
 	 */
-	public static void insertUniqueTriplesSPL(String sub , String pred , String lit)
-	{
-		System.out.println("Unique SPL:" + sub + " - " + pred + " - " + lit);
+	public static void insertUniqueTriplesSPL(String sub , String pred , String lit) {
+		if(log.isDebugEnabled()) {
+			log.debug("Unique SPL:" + sub + " - " + pred + " - " + lit);
+		}
+		//System.out.println("Unique SPL:" + sub + " - " + pred + " - " + lit);
 		try
 		{
 			RepositoryConnection conn = UtilTripleStoreConnection.getConnection();
@@ -277,10 +290,11 @@ public class TripleStoreDriver
 			conn.remove(subject, property, null);
 			conn.add(subject, property, literal);
 
-		} catch (RepositoryException e)
-		{
-			e.printStackTrace();
-			System.out.println("insertUniqueTriplesSPL: "+ sub+" "+pred+" "+lit);
+		} catch (RepositoryException e) {
+			log.error("Insertion problem.", e);
+			//e.printStackTrace();
+			log.error("insertUniqueTriplesSPL: "+ sub+" "+pred+" "+lit);
+			//System.out.println("insertUniqueTriplesSPL: "+ sub+" "+pred+" "+lit);
 			System.exit(0);
 		}
 	}

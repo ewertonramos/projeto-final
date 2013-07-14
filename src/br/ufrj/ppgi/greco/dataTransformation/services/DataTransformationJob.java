@@ -7,8 +7,11 @@ import org.quartz.Job;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import br.ufrj.ppgi.greco.dataTransformation.interfaces.ITransformation;
+import br.ufrj.ppgi.greco.util.Timer;
 import br.ufrj.ppgi.greco.util.config.ConfigResources;
 import br.ufrj.ppgi.greco.util.config.ConfigTransformation;
 import br.ufrj.ppgi.greco.util.constants.TransformationConstants;
@@ -23,8 +26,9 @@ import br.ufrj.ppgi.greco.util.rdf.CommonProperties;
  * @author Fabrício Firmino de Faria
  * @version 1.0
  */
-public class DataTransformationJob implements Job
-{
+public class DataTransformationJob implements Job {
+	
+	Logger log = LoggerFactory.getLogger(DataTransformationJob.class);
 	
 	/**
 	 *Job da tarefa de transformação de dados
@@ -33,20 +37,24 @@ public class DataTransformationJob implements Job
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public void execute(JobExecutionContext context) throws JobExecutionException
-	{
+	public void execute(JobExecutionContext context) throws JobExecutionException {
 		JobDataMap dm = context.getJobDetail().getJobDataMap();
 		HashMap<String, ArrayList<ConfigTransformation>> transfConfigs = (HashMap<String, ArrayList<ConfigTransformation>>) dm.get("transfParameters");
 		HashMap<String, ConfigResources> configResources = (HashMap<String, ConfigResources>) dm.get("resourcesConfig");
 
 		ArrayList<PackageDataCapture> queue = QueueDataCapture.getQueue();
-
-		while (queue.size() > 0)
-		{
+		int count = 0;
+		Timer t = new Timer();
+		while (queue.size() > 0) {
 			PackageDataCapture dpc = queue.get(0);
 			queue.remove(0);
 			ArrayList<ConfigTransformation> ct = transfConfigs.get(dpc.getService());
+			
 			transform(ct, dpc.getData(), configResources);
+			++count;
+		}
+		if(count > 0) {
+			log.info("Transformação de "+ count+" recursos dinâmicos concluída em "+t.getTime()+"ms");
 		}
 	}
 
@@ -56,16 +64,13 @@ public class DataTransformationJob implements Job
 	 *@param data dado recebido de um serviço ou WebHook
 	 *@param configResources conjunto de transformações de dados a serem aplicadas
 	 */
-	private void transform(ArrayList<ConfigTransformation> transfConfs , String data , HashMap<String, ConfigResources> configResources)
-	{
-
+	private void transform(ArrayList<ConfigTransformation> transfConfs, String data, HashMap<String, ConfigResources> configResources) {
 		ArrayList<PackageDataTransformed> queueDTF = QueueDataTransformed.getQueue();
 
 		//XMLTransformation xmlTrans = new XMLTransformation();
 		ITransformation objectTrans = null;
-		
-		for (ConfigTransformation conf : transfConfs)
-		{
+
+		for (ConfigTransformation conf : transfConfs) {
 			// getting resouce object
 			ConfigResources confRes = configResources.get(conf.getResourceURL());
 			
@@ -82,12 +87,9 @@ public class DataTransformationJob implements Job
 			HashMap<String, String> transformationsIndexedByLabel = conf.getTransformation();
 			ArrayList<HashMap<String, ArrayList<String>>> result = objectTrans.getValue(data, conf.getGroup(), transformationsIndexedByLabel);
 
-
-			for (HashMap<String, ArrayList<String>> transformed : result)
-			{
+			for (HashMap<String, ArrayList<String>> transformed : result) {
 				String uriResource = confRes.getUri();
-				if (confRes.getType().equals("dynamic"))
-				{
+				if (confRes.getType().equals("dynamic")) {
 					uriResource = uriResource + System.nanoTime();
 
 					// saving the resource
@@ -96,8 +98,7 @@ public class DataTransformationJob implements Job
 					queueDTF.add(resource);
 
 					// for each static literal from this dynamic Resource
-					for (String staticLit : confRes.getStaticLiterals())
-					{
+					for (String staticLit : confRes.getStaticLiterals()) {
 						String[] params = staticLit.split(confRes.getSeparator());
 						String property = params[0];
 						String value = params[1];
@@ -111,22 +112,19 @@ public class DataTransformationJob implements Job
 					}
 
 					// for each object property from this dynamic Resource
-					for (String objectProperty : confRes.getObjectProperties())
-					{
-						String params[] = objectProperty.split(confRes.getSeparator());
+					for (String objectProperty : confRes.getObjectProperties()) {
+						String params[] = objectProperty.split(confRes
+								.getSeparator());
 						String type = params[0];
 						String objProperty = params[1];
 						String uri = params[2];
 
-						if (type.equals("dominant"))
-						{
+						if (type.equals("dominant")) {
 							PackageDataTransformed pdt = new PackageDataTransformed();
 							pdt.insertSPO(uriResource, objProperty, uri);
 							queueDTF.add(pdt);
 
-						}
-						else if(type.equals("nondominant"))
-						{
+						} else if (type.equals("nondominant")) {
 							PackageDataTransformed pdt = new PackageDataTransformed();
 							pdt.insertSPO(uri, objProperty, uriResource);
 							queueDTF.add(pdt);
@@ -134,10 +132,8 @@ public class DataTransformationJob implements Job
 					}
 				}
 
-				for (String pred : transformed.keySet())
-				{
-					for (String transformedResult : transformed.get(pred))
-					{
+				for (String pred : transformed.keySet()) {
+					for (String transformedResult : transformed.get(pred)) {
 						PackageDataTransformed pdt = new PackageDataTransformed();
 
 						if (conf.isUnique())
@@ -152,8 +148,6 @@ public class DataTransformationJob implements Job
 					}
 				}
 			}
-
 		}
-
 	}
 }

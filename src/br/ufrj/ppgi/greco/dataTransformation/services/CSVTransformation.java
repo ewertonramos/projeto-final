@@ -10,16 +10,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import br.ufrj.ppgi.greco.dataTransformation.interfaces.ITransformation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import au.com.bytecode.opencsv.CSVReader;
+import br.ufrj.ppgi.greco.dataTransformation.interfaces.ITransformation;
+import br.ufrj.ppgi.greco.util.Timer;
 
 public class CSVTransformation implements ITransformation {
 
 	private String separatorChar;
 	private String withHeader;
 	private Map<String, String> headers;
-
+	
+	Logger log = LoggerFactory.getLogger(CSVTransformation.class);
+	
 	public CSVTransformation(String separatorChar, String withHeader, Map<String, String> headers) {
 		this.separatorChar = separatorChar;
 		this.withHeader = withHeader;
@@ -29,6 +34,7 @@ public class CSVTransformation implements ITransformation {
 	@Override
 	public ArrayList<HashMap<String, ArrayList<String>>> getValue(String data, String group, HashMap<String, String> transformationsIndexedByLabel) {
 		ArrayList<HashMap<String, ArrayList<String>>> result = new ArrayList<HashMap<String, ArrayList<String>>>();
+		Timer t = new Timer();
 		try {
 			Character separator = ',';
 			if (this.separatorChar != null && !"".equals(this.separatorChar) && this.separatorChar.length() == 1) {
@@ -91,7 +97,7 @@ public class CSVTransformation implements ITransformation {
 			// FIXME Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		log.info("Transformou " +result.size()+ " linhas CSV em: "+t.getTime()+"ms");
 		return result;
 	}
 

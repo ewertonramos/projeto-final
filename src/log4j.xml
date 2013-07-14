@@ -3,22 +3,46 @@
 
 	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} %5p [%-20c{1}] %m%n" />
+			<param name="ConversionPattern" value="%5p [%t:%C{3}:%L] %d{HH:mm:ss.SSS} - %m%n" />
 		</layout>
 	</appender>
-
-	<category name="br.com.caelum.vraptor">
-		<priority value="INFO" />
-		<appender-ref ref="stdout" />
-	</category>
-
-	<category name="org.springframework">
-		<priority value="INFO" />
-		<appender-ref ref="stdout" />
-	</category>
 	
-	<category name="org.quartz">
-    	<priority value="FATAL" />
-	</category>
+	<appender name="fileout" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="report.log"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%5p [%t%C{3}:%L] %d{dd/MM/yyyy HH:mm:ss} - %m%n"/>
+		</layout>
+	</appender>
+	
+	<logger name="br.com.caelum.vraptor">
+		<level value="INFO" />
+		<appender-ref ref="stdout" />
+	</logger>
 
+	<logger name="org.springframework">
+		<level value="INFO" />
+		<appender-ref ref="stdout" />
+	</logger>
+	
+	<logger name="org.quartz">
+    	<level value="FATAL" />
+	</logger>
+	
+	<logger name="br.ufrj.ppgi.greco.dataTransformation.services">
+    	<level value="debug" />
+	</logger>
+	
+	<logger name="br.ufrj.ppgi.greco.util.rdf">
+    	<level value="info" />
+	</logger>
+	
+	<logger name="br.ufrj.ppgi.greco">
+    	<level value="info" />
+	</logger>
+	
+	<root>
+		<level value="error"/>
+		<appender-ref ref="stdout" />
+		<appender-ref ref="fileout" />
+	</root>
 </log4j:configuration>

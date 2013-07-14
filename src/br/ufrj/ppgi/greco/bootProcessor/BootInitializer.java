@@ -8,10 +8,13 @@ import java.util.HashMap;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import br.ufrj.ppgi.greco.util.Timer;
 import br.ufrj.ppgi.greco.util.config.ConfigResources;
 import br.ufrj.ppgi.greco.util.config.ConfigServices;
 import br.ufrj.ppgi.greco.util.config.ConfigTransformation;
@@ -25,16 +28,15 @@ import br.ufrj.ppgi.greco.util.rdf.TripleStoreDriver;
  * @author Fabrício Firmino de Faria
  * @version 1.0
  */
-public class BootInitializer
-{
+public class BootInitializer {
 
 	private HashMap<String, ConfigResources> resourcesConfig;
 	private HashMap<String, ConfigServices> servicesConfig;
 	private HashMap<String, ArrayList<ConfigTransformation>> transformationsConfig;
 	private HashMap<String, ConfigVirtualTransformation> virtualTransf;
-
-	public BootInitializer()
-	{
+	Logger log = LoggerFactory.getLogger(BootInitializer.class);
+	
+	public BootInitializer() {
 		this.resourcesConfig = new HashMap<String, ConfigResources>();
 		this.servicesConfig = new HashMap<String, ConfigServices>();
 		this.transformationsConfig = new HashMap<String, ArrayList<ConfigTransformation>>();
@@ -250,18 +252,17 @@ public class BootInitializer
 	/**
 	 *Faz a carga dos recursos dinâmcios no repositório de triplas
 	 */
-	private void loadStaticResources()
-	{
-		for (String key : resourcesConfig.keySet())
-		{
+	private void loadStaticResources() {
+		Timer t = new Timer();
+		int count = 0;
+		for (String key : resourcesConfig.keySet()) {
 			ConfigResources confRes = resourcesConfig.get(key);
-
-			if (confRes.getType().equals("static"))
-			{
+			++count;
+			t.start();
+			if (confRes.getType().equals("static")) {
 				TripleStoreDriver.insertTriplesSPO(confRes.getUri(), CommonProperties.RDFTYPE,confRes.getRdfType() );
 				
-				for (String staticLit : confRes.getStaticLiterals())
-				{
+				for (String staticLit : confRes.getStaticLiterals()) {
 					String[] params = staticLit.split(confRes.getSeparator());
 
 					String property = params[0];
@@ -270,25 +271,23 @@ public class BootInitializer
 					
 				}
 
-				for (String objectProperty : confRes.getObjectProperties())
-				{
+				for (String objectProperty : confRes.getObjectProperties()) {
 					String params[] = objectProperty.split(confRes.getSeparator());
 
 					String type = params[0];
 					String objProperty = params[1];
 					String uri = params[2];
 
-					if (type.equals("dominant"))
-					{
+					if (type.equals("dominant")) {
 						TripleStoreDriver.insertTriplesSPO(confRes.getUri(), objProperty, uri);
 						
-					} else
-					{
+					} else {
 						TripleStoreDriver.insertTriplesSPO(uri, objProperty,confRes.getUri() );
 					}
 				}
 			}
 		}
+		log.info("Finalizada inserção de recurasos estáticos. Inseridos: "+count+" Tempo: "+t.getTime()+"ms");
 	}
 
 	/**
