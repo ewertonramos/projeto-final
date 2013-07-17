@@ -50,7 +50,8 @@ public class ServiceCaptureScheduler
 					job.getJobDataMap().put("apikey", "eOPKg7QxTQwnj_8PLyMK97sw9X2SAKx0NUM4SzdsTEhncz0g");
 
 					String intervalSeconds = serviceConf.getRefreshRate();
-					Trigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger-" + serviceConf.getId(), "group-" + serviceConf.getId()).withSchedule(CronScheduleBuilder.cronSchedule("0/" + intervalSeconds + " * * * * ?")).build();
+					// "0/" + intervalSeconds + " * * * * ?"
+					Trigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger-" + serviceConf.getId(), "group-" + serviceConf.getId()).withSchedule(CronScheduleBuilder.cronSchedule(intervalSeconds)).build();
 					sched.scheduleJob(job, trigger);
 				}
 			}

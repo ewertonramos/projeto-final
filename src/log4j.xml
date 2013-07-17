@@ -3,14 +3,14 @@
 
 	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%5p [%t:%C{3}:%L] %d{HH:mm:ss.SSS} - %m%n" />
+			<param name="ConversionPattern" value="%5p [%t/%C{3}:%L] %d{HH:mm:ss.SSS} - %m%n" />
 		</layout>
 	</appender>
 	
 	<appender name="fileout" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="File" value="report.log"/>
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%5p [%t%C{3}:%L] %d{dd/MM/yyyy HH:mm:ss} - %m%n"/>
+			<param name="ConversionPattern" value="%5p [%t/%C{3}:%L] %d{dd/MM/yyyy HH:mm:ss.SSS} - %m%n"/>
 		</layout>
 	</appender>
 	

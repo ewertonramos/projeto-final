@@ -1,0 +1,129 @@
+ INFO [main/greco.bootProcessor.BootInitializer:290] 16/07/2013 21:20:18.579 - Finalizada inserção de recurasos estáticos. Inseridos: 4 Tempo: 22ms
+ INFO [QuartzScheduler_Worker-43/dataTransformation.services.CSVTransformation:100] 16/07/2013 21:21:01.135 - Transformou 4352 linhas CSV em: 133ms
+ INFO [QuartzScheduler_Worker-43/dataTransformation.services.CSVTransformation:100] 16/07/2013 21:21:01.187 - Transformou 17 linhas CSV em: 7ms
+ INFO [QuartzScheduler_Worker-43/dataTransformation.services.CSVTransformation:100] 16/07/2013 21:21:01.194 - Transformou 499 linhas CSV em: 5ms
+ INFO [QuartzScheduler_Worker-43/dataTransformation.services.DataTransformationJob:57] 16/07/2013 21:21:01.195 - Transformação de 2 recursos dinâmicos concluída em 195ms
+ INFO [main/greco.bootProcessor.BootInitializer:290] 16/07/2013 22:04:04.338 - Finalizada inserção de recurasos estáticos. Inseridos: 4 Tempo: 11ms
+ INFO [QuartzScheduler_Worker-21/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:05:11.223 - Transformou 4352 linhas CSV em: 10207ms
+ INFO [QuartzScheduler_Worker-21/dataTransformation.services.DataTransformationJob:57] 16/07/2013 22:05:11.288 - Transformação de 1 recursos dinâmicos concluída em 10288ms
+ INFO [QuartzScheduler_Worker-23/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:05:12.228 - Transformou 17 linhas CSV em: 10228ms
+ INFO [QuartzScheduler_Worker-23/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:05:12.236 - Transformou 499 linhas CSV em: 7ms
+ INFO [QuartzScheduler_Worker-23/dataTransformation.services.DataTransformationJob:57] 16/07/2013 22:05:12.237 - Transformação de 1 recursos dinâmicos concluída em 10237ms
+ INFO [QuartzScheduler_Worker-20/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:47.847 - Finalizada inserção dos recursos dinâmicos. Inseridos: 440 Tempo: 111847ms
+ INFO [QuartzScheduler_Worker-2/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:47.849 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1939 Tempo: 150849ms
+ INFO [QuartzScheduler_Worker-19/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:47.850 - Finalizada inserção dos recursos dinâmicos. Inseridos: 661 Tempo: 116849ms
+ INFO [QuartzScheduler_Worker-32/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:47.851 - Finalizada inserção dos recursos dinâmicos. Inseridos: 643 Tempo: 122851ms
+ INFO [QuartzScheduler_Worker-23/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.271 - Finalizada inserção dos recursos dinâmicos. Inseridos: 323 Tempo: 109271ms
+ INFO [QuartzScheduler_Worker-26/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.272 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1069 Tempo: 141272ms
+ INFO [QuartzScheduler_Worker-42/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.273 - Finalizada inserção dos recursos dinâmicos. Inseridos: 2729 Tempo: 156273ms
+ INFO [QuartzScheduler_Worker-46/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.272 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1647 Tempo: 154271ms
+ INFO [QuartzScheduler_Worker-14/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.276 - Finalizada inserção dos recursos dinâmicos. Inseridos: 869 Tempo: 127274ms
+ INFO [QuartzScheduler_Worker-44/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.272 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1829 Tempo: 155270ms
+ INFO [QuartzScheduler_Worker-45/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.276 - Finalizada inserção dos recursos dinâmicos. Inseridos: 766 Tempo: 131276ms
+ INFO [QuartzScheduler_Worker-36/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.276 - Finalizada inserção dos recursos dinâmicos. Inseridos: 621 Tempo: 122276ms
+ INFO [QuartzScheduler_Worker-33/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.276 - Finalizada inserção dos recursos dinâmicos. Inseridos: 992 Tempo: 136276ms
+ INFO [QuartzScheduler_Worker-5/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.276 - Finalizada inserção dos recursos dinâmicos. Inseridos: 626 Tempo: 118276ms
+ INFO [QuartzScheduler_Worker-47/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.276 - Finalizada inserção dos recursos dinâmicos. Inseridos: 731 Tempo: 119276ms
+ INFO [QuartzScheduler_Worker-21/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.276 - Finalizada inserção dos recursos dinâmicos. Inseridos: 701 Tempo: 120275ms
+ INFO [QuartzScheduler_Worker-35/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.273 - Finalizada inserção dos recursos dinâmicos. Inseridos: 532 Tempo: 115273ms
+ INFO [QuartzScheduler_Worker-13/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.272 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1400 Tempo: 146258ms
+ INFO [QuartzScheduler_Worker-3/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.272 - Finalizada inserção dos recursos dinâmicos. Inseridos: 922 Tempo: 129270ms
+ INFO [QuartzScheduler_Worker-50/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.293 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1990 Tempo: 152293ms
+ INFO [QuartzScheduler_Worker-43/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.294 - Finalizada inserção dos recursos dinâmicos. Inseridos: 777 Tempo: 132294ms
+ INFO [QuartzScheduler_Worker-25/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.294 - Finalizada inserção dos recursos dinâmicos. Inseridos: 729 Tempo: 125294ms
+ INFO [QuartzScheduler_Worker-34/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.295 - Finalizada inserção dos recursos dinâmicos. Inseridos: 799 Tempo: 137294ms
+ INFO [QuartzScheduler_Worker-18/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.296 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1389 Tempo: 145296ms
+ INFO [QuartzScheduler_Worker-10/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.295 - Finalizada inserção dos recursos dinâmicos. Inseridos: 588 Tempo: 128295ms
+ INFO [QuartzScheduler_Worker-24/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.295 - Finalizada inserção dos recursos dinâmicos. Inseridos: 668 Tempo: 116295ms
+ INFO [QuartzScheduler_Worker-12/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.295 - Finalizada inserção dos recursos dinâmicos. Inseridos: 591 Tempo: 110295ms
+ INFO [QuartzScheduler_Worker-26/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:07:48.299 - Transformou 17 linhas CSV em: 22ms
+ INFO [QuartzScheduler_Worker-6/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.294 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1577 Tempo: 149294ms
+ INFO [QuartzScheduler_Worker-11/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.309 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1289 Tempo: 147309ms
+ INFO [QuartzScheduler_Worker-31/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.295 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1048 Tempo: 138295ms
+ INFO [QuartzScheduler_Worker-15/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.294 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1095 Tempo: 143294ms
+ INFO [QuartzScheduler_Worker-37/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.309 - Finalizada inserção dos recursos dinâmicos. Inseridos: 980 Tempo: 135309ms
+ INFO [QuartzScheduler_Worker-22/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.312 - Finalizada inserção dos recursos dinâmicos. Inseridos: 893 Tempo: 142312ms
+ INFO [QuartzScheduler_Worker-27/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.312 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1175 Tempo: 140312ms
+ INFO [QuartzScheduler_Worker-9/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.314 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1415 Tempo: 148314ms
+ INFO [QuartzScheduler_Worker-40/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.313 - Finalizada inserção dos recursos dinâmicos. Inseridos: 798 Tempo: 114313ms
+ INFO [QuartzScheduler_Worker-4/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.318 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1559 Tempo: 150318ms
+ INFO [QuartzScheduler_Worker-48/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.317 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1545 Tempo: 153317ms
+ INFO [QuartzScheduler_Worker-8/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.319 - Finalizada inserção dos recursos dinâmicos. Inseridos: 496 Tempo: 111319ms
+ INFO [QuartzScheduler_Worker-16/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.320 - Finalizada inserção dos recursos dinâmicos. Inseridos: 794 Tempo: 126320ms
+ INFO [QuartzScheduler_Worker-38/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.321 - Finalizada inserção dos recursos dinâmicos. Inseridos: 714 Tempo: 121321ms
+ INFO [QuartzScheduler_Worker-39/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.321 - Finalizada inserção dos recursos dinâmicos. Inseridos: 910 Tempo: 134321ms
+ INFO [QuartzScheduler_Worker-29/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.321 - Finalizada inserção dos recursos dinâmicos. Inseridos: 703 Tempo: 139321ms
+ INFO [QuartzScheduler_Worker-1/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.321 - Finalizada inserção dos recursos dinâmicos. Inseridos: 508 Tempo: 113321ms
+ INFO [QuartzScheduler_Worker-41/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.322 - Finalizada inserção dos recursos dinâmicos. Inseridos: 768 Tempo: 133322ms
+ INFO [QuartzScheduler_Worker-17/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.322 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1037 Tempo: 144322ms
+ INFO [QuartzScheduler_Worker-49/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.322 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1060 Tempo: 130322ms
+ INFO [QuartzScheduler_Worker-28/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:07:48.322 - Finalizada inserção dos recursos dinâmicos. Inseridos: 719 Tempo: 124321ms
+ INFO [QuartzScheduler_Worker-26/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:07:48.325 - Transformou 499 linhas CSV em: 24ms
+ INFO [QuartzScheduler_Worker-26/dataTransformation.services.DataTransformationJob:57] 16/07/2013 22:07:48.328 - Transformação de 1 recursos dinâmicos concluída em 51ms
+ INFO [QuartzScheduler_Worker-32/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:07:48.730 - Transformou 4352 linhas CSV em: 859ms
+ INFO [QuartzScheduler_Worker-32/dataTransformation.services.DataTransformationJob:57] 16/07/2013 22:07:48.896 - Transformação de 1 recursos dinâmicos concluída em 1025ms
+ INFO [QuartzScheduler_Worker-46/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:07:50.159 - Transformou 4352 linhas CSV em: 154ms
+ INFO [QuartzScheduler_Worker-46/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:07:50.180 - Transformou 17 linhas CSV em: 4ms
+ INFO [QuartzScheduler_Worker-46/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:07:50.186 - Transformou 499 linhas CSV em: 6ms
+ INFO [QuartzScheduler_Worker-46/dataTransformation.services.DataTransformationJob:57] 16/07/2013 22:07:50.187 - Transformação de 2 recursos dinâmicos concluída em 182ms
+ INFO [QuartzScheduler_Worker-40/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:08:02.298 - Transformou 4352 linhas CSV em: 297ms
+ INFO [QuartzScheduler_Worker-40/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:08:02.419 - Transformou 17 linhas CSV em: 23ms
+ INFO [QuartzScheduler_Worker-40/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:08:02.441 - Transformou 499 linhas CSV em: 21ms
+ INFO [QuartzScheduler_Worker-40/dataTransformation.services.DataTransformationJob:57] 16/07/2013 22:08:02.443 - Transformação de 2 recursos dinâmicos concluída em 442ms
+ INFO [main/greco.bootProcessor.BootInitializer:290] 16/07/2013 22:17:14.210 - Finalizada inserção de recurasos estáticos. Inseridos: 4 Tempo: 16ms
+ INFO [main/greco.bootProcessor.BootInitializer:290] 16/07/2013 22:21:20.157 - Finalizada inserção de recurasos estáticos. Inseridos: 4 Tempo: 15ms
+ INFO [main/greco.bootProcessor.BootInitializer:290] 16/07/2013 22:44:46.234 - Finalizada inserção de recurasos estáticos. Inseridos: 4 Tempo: 6ms
+ INFO [QuartzScheduler_Worker-35/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:45:01.021 - Transformou 17 linhas CSV em: 14ms
+ INFO [QuartzScheduler_Worker-35/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:45:01.033 - Transformou 499 linhas CSV em: 10ms
+ INFO [QuartzScheduler_Worker-35/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:45:01.131 - Transformou 4352 linhas CSV em: 96ms
+ INFO [QuartzScheduler_Worker-35/dataTransformation.services.DataTransformationJob:57] 16/07/2013 22:45:01.186 - Transformação de 2 recursos dinâmicos concluída em 180ms
+ INFO [main/greco.bootProcessor.BootInitializer:290] 16/07/2013 22:49:03.873 - Finalizada inserção de recurasos estáticos. Inseridos: 4 Tempo: 7ms
+ INFO [QuartzScheduler_Worker-23/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:50:01.123 - Transformou 4352 linhas CSV em: 120ms
+ INFO [QuartzScheduler_Worker-23/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:50:01.172 - Transformou 17 linhas CSV em: 5ms
+ INFO [QuartzScheduler_Worker-23/dataTransformation.services.CSVTransformation:100] 16/07/2013 22:50:01.179 - Transformou 499 linhas CSV em: 6ms
+ INFO [QuartzScheduler_Worker-23/dataTransformation.services.DataTransformationJob:57] 16/07/2013 22:50:01.181 - Transformação de 2 recursos dinâmicos concluída em 179ms
+ INFO [QuartzScheduler_Worker-28/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.713 - Finalizada inserção dos recursos dinâmicos. Inseridos: 932 Tempo: 110713ms
+ INFO [QuartzScheduler_Worker-17/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.713 - Finalizada inserção dos recursos dinâmicos. Inseridos: 475 Tempo: 89709ms
+ INFO [QuartzScheduler_Worker-11/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.713 - Finalizada inserção dos recursos dinâmicos. Inseridos: 868 Tempo: 117713ms
+ INFO [QuartzScheduler_Worker-46/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.713 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1417 Tempo: 124713ms
+ INFO [QuartzScheduler_Worker-8/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.714 - Finalizada inserção dos recursos dinâmicos. Inseridos: 903 Tempo: 118714ms
+ INFO [QuartzScheduler_Worker-2/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.764 - Finalizada inserção dos recursos dinâmicos. Inseridos: 982 Tempo: 121764ms
+ INFO [QuartzScheduler_Worker-3/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.764 - Finalizada inserção dos recursos dinâmicos. Inseridos: 491 Tempo: 88764ms
+ INFO [QuartzScheduler_Worker-43/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.764 - Finalizada inserção dos recursos dinâmicos. Inseridos: 621 Tempo: 106764ms
+ INFO [QuartzScheduler_Worker-31/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.764 - Finalizada inserção dos recursos dinâmicos. Inseridos: 647 Tempo: 109764ms
+ INFO [QuartzScheduler_Worker-42/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.764 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1234 Tempo: 126764ms
+ INFO [QuartzScheduler_Worker-26/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.764 - Finalizada inserção dos recursos dinâmicos. Inseridos: 2156 Tempo: 133764ms
+ INFO [QuartzScheduler_Worker-6/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.764 - Finalizada inserção dos recursos dinâmicos. Inseridos: 404 Tempo: 103764ms
+ INFO [QuartzScheduler_Worker-32/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.766 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1918 Tempo: 131764ms
+ INFO [QuartzScheduler_Worker-20/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.765 - Finalizada inserção dos recursos dinâmicos. Inseridos: 876 Tempo: 114764ms
+ INFO [QuartzScheduler_Worker-38/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.765 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1652 Tempo: 128765ms
+ INFO [QuartzScheduler_Worker-33/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 383 Tempo: 90767ms
+ INFO [QuartzScheduler_Worker-4/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1039 Tempo: 120767ms
+ INFO [QuartzScheduler_Worker-21/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.765 - Finalizada inserção dos recursos dinâmicos. Inseridos: 667 Tempo: 100765ms
+ INFO [QuartzScheduler_Worker-29/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.768 - Finalizada inserção dos recursos dinâmicos. Inseridos: 733 Tempo: 98768ms
+ INFO [QuartzScheduler_Worker-19/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.765 - Finalizada inserção dos recursos dinâmicos. Inseridos: 781 Tempo: 113765ms
+ INFO [QuartzScheduler_Worker-44/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.765 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1396 Tempo: 125765ms
+ INFO [QuartzScheduler_Worker-39/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.765 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1405 Tempo: 127765ms
+ INFO [QuartzScheduler_Worker-27/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.764 - Finalizada inserção dos recursos dinâmicos. Inseridos: 2490 Tempo: 134764ms
+ INFO [QuartzScheduler_Worker-15/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.769 - Finalizada inserção dos recursos dinâmicos. Inseridos: 847 Tempo: 115769ms
+ INFO [QuartzScheduler_Worker-16/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.768 - Finalizada inserção dos recursos dinâmicos. Inseridos: 432 Tempo: 94768ms
+ INFO [QuartzScheduler_Worker-34/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.768 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1948 Tempo: 130768ms
+ INFO [QuartzScheduler_Worker-1/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.768 - Finalizada inserção dos recursos dinâmicos. Inseridos: 586 Tempo: 104768ms
+ INFO [QuartzScheduler_Worker-40/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.768 - Finalizada inserção dos recursos dinâmicos. Inseridos: 660 Tempo: 107768ms
+ INFO [QuartzScheduler_Worker-41/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 620 Tempo: 97765ms
+ INFO [QuartzScheduler_Worker-14/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 636 Tempo: 101767ms
+ INFO [QuartzScheduler_Worker-13/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 900 Tempo: 116767ms
+ INFO [QuartzScheduler_Worker-45/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 555 Tempo: 92767ms
+ INFO [QuartzScheduler_Worker-25/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 434 Tempo: 93767ms
+ INFO [QuartzScheduler_Worker-48/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1364 Tempo: 123767ms
+ INFO [QuartzScheduler_Worker-7/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 433 Tempo: 95766ms
+ INFO [QuartzScheduler_Worker-23/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 729 Tempo: 111767ms
+ INFO [QuartzScheduler_Worker-12/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 430 Tempo: 91767ms
+ INFO [QuartzScheduler_Worker-49/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 446 Tempo: 96765ms
+ INFO [QuartzScheduler_Worker-36/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 709 Tempo: 108767ms
+ INFO [QuartzScheduler_Worker-18/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 841 Tempo: 112767ms
+ INFO [QuartzScheduler_Worker-30/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 2159 Tempo: 132767ms
+ INFO [QuartzScheduler_Worker-5/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 903 Tempo: 119767ms
+ INFO [QuartzScheduler_Worker-24/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 2922 Tempo: 135767ms
+ INFO [QuartzScheduler_Worker-47/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 499 Tempo: 105767ms
+ INFO [QuartzScheduler_Worker-50/greco.dataRDFStore.RDFStoreJob:57] 16/07/2013 22:52:17.767 - Finalizada inserção dos recursos dinâmicos. Inseridos: 1430 Tempo: 122767ms

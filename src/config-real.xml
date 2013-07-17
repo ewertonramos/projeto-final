@@ -2,12 +2,12 @@
 	<services>
 		<service id="1">
 			<url>http://api.dataprev.gov.br/previdencia/anuario/2009/acidentes-do-trabalho.csv</url>
-			<refresh-rate>1800</refresh-rate>
+			<refresh-rate>0 0/10 * * * ? *</refresh-rate>
 			<return-type>csv</return-type>
 		</service>
 		<service id="2">
 			<url>http://api.convenios.gov.br/siconv/v1/consulta/municipios.csv?</url>
-			<refresh-rate>1800</refresh-rate>
+			<refresh-rate>0 0/10 * * * ? *</refresh-rate>
 			<return-type>csv</return-type>
 		</service>
 	</services>
