@@ -33,28 +33,26 @@ public class RDFStoreJob implements Job {
 		ArrayList<PackageDataTransformed> queueDT = QueueDataTransformed.getQueue();
 		int count = 0;
 		Timer t = new Timer();
-		Timer t2 = new Timer();
 		 while(queueDT.size() > 0 ) {
-			 t2.start();
-			 //getting first element in the queue
 			 PackageDataTransformed pdt = queueDT.get(0);
 			 queueDT.remove(0);
 			 
 			 if(pdt.getType().equals("literal")) {
-				 if(pdt.isUnique())
-					 TripleStoreDriver.insertUniqueTriplesSPL(pdt.getSubject(), pdt.getPredicate(), pdt.getLiteral());
-				 else
-					 TripleStoreDriver.insertTriplesSPL(pdt.getSubject(), pdt.getPredicate(), pdt.getLiteral());
+				 if(pdt.isUnique()) {
+					 TripleStoreDriver.insertUniqueTriplesSPL(pdt.getSubject(), pdt.getPredicate(), pdt.getLiteral(), false);
+					 ++count;
+				 } else {
+					 TripleStoreDriver.insertTriplesSPL(pdt.getSubject(), pdt.getPredicate(), pdt.getLiteral(), false);
+					 ++count;
+				 }
 			 } else {
-				 TripleStoreDriver.insertTriplesSPO(pdt.getSubject(), pdt.getPredicate(), pdt.getObject());
+				 TripleStoreDriver.insertTriplesSPO(pdt.getSubject(), pdt.getPredicate(), pdt.getObject(), false);
+				 ++count;
 			 }
-			 
-			 ++count;
-			 //log.info("Inserido 1 em "+t2.getTime()+"ms");
 		 }
 		 if(count>0) {
-			 TripleStoreDriver.commit();
-			 log.info("Finalizada inserção dos recursos dinâmicos. Inseridos: "+count+" Tempo: "+t.getTime()+"ms");
+			TripleStoreDriver.commit();
+			log.info("Finalizada inserção dos recursos dinâmicos. Inseridos: {} Tempo: {}ms", count, t.getTime());
 		 }
 	}
 }

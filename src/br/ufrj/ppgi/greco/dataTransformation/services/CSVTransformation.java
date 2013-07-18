@@ -1,5 +1,6 @@
 package br.ufrj.ppgi.greco.dataTransformation.services;
 
+import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -86,6 +87,7 @@ public class CSVTransformation implements ITransformation {
 					for (ColunaValor<String, String> groupValue : groupEntry.getValue()) {
 						if (groupValue.column.equals(asIndex(transEntry.getKey()).toString())) {
 							values.add(groupValue.value);
+							break;
 						}
 					}
 					mapping.put(transEntry.getValue(), values);
@@ -93,11 +95,10 @@ public class CSVTransformation implements ITransformation {
 				result.add(mapping);
 			}
 
-		} catch (Exception e) {
-			// FIXME Auto-generated catch block
-			e.printStackTrace();
+		} catch (IOException e) {
+			log.error("CSV Transformation problem.",e);
 		}
-		log.info("Transformou " +result.size()+ " linhas CSV em: "+t.getTime()+"ms");
+		log.info("Transformação CSV concluída. {} linhas em {}ms", result.size(), t.getTime());
 		return result;
 	}
 

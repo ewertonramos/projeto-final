@@ -257,10 +257,10 @@ public class BootInitializer {
 		int count = 0;
 		for (String key : resourcesConfig.keySet()) {
 			ConfigResources confRes = resourcesConfig.get(key);
-			++count;
 			t.start();
 			if (confRes.getType().equals("static")) {
-				TripleStoreDriver.insertTriplesSPO(confRes.getUri(), CommonProperties.RDFTYPE,confRes.getRdfType() );
+				TripleStoreDriver.insertTriplesSPO(confRes.getUri(), CommonProperties.RDFTYPE,confRes.getRdfType());
+				++count;
 				
 				for (String staticLit : confRes.getStaticLiterals()) {
 					String[] params = staticLit.split(confRes.getSeparator());
@@ -282,12 +282,12 @@ public class BootInitializer {
 						TripleStoreDriver.insertTriplesSPO(confRes.getUri(), objProperty, uri);
 						
 					} else {
-						TripleStoreDriver.insertTriplesSPO(uri, objProperty,confRes.getUri() );
+						TripleStoreDriver.insertTriplesSPO(uri, objProperty,confRes.getUri());
 					}
 				}
 			}
 		}
-		log.info("Finalizada inserção de recurasos estáticos. Inseridos: "+count+" Tempo: "+t.getTime()+"ms");
+		log.info("Finalizada inserção de recurasos estáticos. Inseridos: {} Tempo: {}ms", count,t.getTime());
 	}
 
 	/**

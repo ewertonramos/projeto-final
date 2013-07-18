@@ -124,7 +124,7 @@ public class SemanticHubServer
 	 * Inicializa o servidor a partir de um arquivo de configuração
 	 * @param file arquivo de configuração a ser carregado
 	 */
-//	//with config file instead of database config parameters
+	//with config file instead of database config parameters
 	public void start(String file )
 	{
 		BootInitializer bi = new BootInitializer();

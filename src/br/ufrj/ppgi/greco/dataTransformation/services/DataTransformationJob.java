@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.ufrj.ppgi.greco.dataTransformation.interfaces.ITransformation;
-import br.ufrj.ppgi.greco.util.Timer;
 import br.ufrj.ppgi.greco.util.config.ConfigResources;
 import br.ufrj.ppgi.greco.util.config.ConfigTransformation;
 import br.ufrj.ppgi.greco.util.constants.TransformationConstants;
@@ -43,18 +42,12 @@ public class DataTransformationJob implements Job {
 		HashMap<String, ConfigResources> configResources = (HashMap<String, ConfigResources>) dm.get("resourcesConfig");
 
 		ArrayList<PackageDataCapture> queue = QueueDataCapture.getQueue();
-		int count = 0;
-		Timer t = new Timer();
 		while (queue.size() > 0) {
 			PackageDataCapture dpc = queue.get(0);
 			queue.remove(0);
 			ArrayList<ConfigTransformation> ct = transfConfigs.get(dpc.getService());
 			
 			transform(ct, dpc.getData(), configResources);
-			++count;
-		}
-		if(count > 0) {
-			log.info("Transformação de "+ count+" recursos dinâmicos concluída em "+t.getTime()+"ms");
 		}
 	}
 

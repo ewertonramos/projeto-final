@@ -192,10 +192,8 @@ public class TripleStoreDriver {
 			}
 
 		} catch (Exception e) {
-			log.error("Problem.", e);
-			//e.printStackTrace();
-			log.error("sparqlExecGetLiteral: "+ sparql);
-			//System.out.println("sparqlExecGetLiteral: "+ sparql);
+			e.printStackTrace();
+			System.out.println("sparqlExecGetLiteral: "+ sparql);
 			System.exit(0);
 		}
 
@@ -203,98 +201,98 @@ public class TripleStoreDriver {
 
 	}
 
+	public static void insertTriplesSPO(String sub, String pred, String obj) {
+		insertTriplesSPO(sub, pred, obj, true);
+	}
 	
 	/**
 	 *Insere uma tripla RDF no formato sujeito-predicado-objeto
 	 *@param sub sujeito
-	 *@param pred predicado
-	 *@param obj objeto
+	 * @param pred predicado
+	 * @param obj objeto
+	 * @param commit?
 	 */
-	public static void insertTriplesSPO(String sub , String pred , String obj)
-	{
-		//System.out.println("SPO: " + sub + " - " + pred + " - " + obj);
-		if(log.isDebugEnabled()) {
-			log.debug("SPO: " + sub + " - " + pred + " - " + obj);
-		}
-		try
-		{
+	public static void insertTriplesSPO(String sub, String pred, String obj, boolean commit) {
+		String[] logParam = { sub, pred, obj };
+		log.debug("SPO:  {} - {} - {}", logParam);
+		try {
 			RepositoryConnection conn = UtilTripleStoreConnection.getConnection();
 			ValueFactory f = UtilTripleStoreConnection.getConnection().getRepository().getValueFactory();
 			URI subject = f.createURI(sub);
 			URI property = f.createURI(pred);
 			URI object = f.createURI(obj);
+			
 			conn.add(subject, property, object);
-
+			if(commit) {
+				conn.commit();
+			}
 		} catch (RepositoryException e) {
-			log.error("Problem.", e);
-			//e.printStackTrace();
-			log.error("insertTriplesSPO: "+ sub+" "+pred+" "+obj);
-			//System.out.println("insertTriplesSPO: "+ sub+" "+pred+" "+obj);
+			log.error("insertTriplesSPO problem:  {} - {} - {}",logParam,e);
 			System.exit(0);
 		}
 	}
 
+	public static void insertTriplesSPL(String sub , String pred , String lit) {
+		insertTriplesSPL(sub, pred, lit, true);
+	}
 	
 	/**
 	 *Insere uma tripla RDF no formato sujeito-predicado-literal
 	 *@param sub sujeito
-	 *@param pred predicado
-	 *@param lit literal
+	 * @param pred predicado
+	 * @param lit literal
+	 * @param commit?
 	 */
-	public static void insertTriplesSPL(String sub , String pred , String lit) {
-		if(log.isDebugEnabled()) {
-			log.debug("SPL:" + sub + " - " + pred + " - " + lit);
-		}
-		//System.out.println("SPL:" + sub + " - " + pred + " - " + lit);
-		try
-		{
+	public static void insertTriplesSPL(String sub , String pred , String lit, boolean commit) {
+		String[] logParam = {sub, pred, lit};
+		log.debug("SPL: {} - {} - {}",logParam);
+		try {
 			RepositoryConnection conn = UtilTripleStoreConnection.getConnection();
 
 			ValueFactory f = UtilTripleStoreConnection.getConnection().getRepository().getValueFactory();
 			URI subject = f.createURI(sub);
 			URI property = f.createURI(pred);
 			Literal literal = f.createLiteral(lit);
-
+			
 			conn.add(subject, property, literal);
-
+			if(commit) {
+				conn.commit();
+			}
 		} catch (RepositoryException e) {
-			log.error("Insetion problem.", e);
-			//e.printStackTrace();
-			//System.out.println("insertTriplesSPL: "+ sub+" "+pred+" "+lit);
-			log.error("insertTriplesSPL: "+ sub+" "+pred+" "+lit);
+			log.error("insertTriplesSPL:  {} - {} - {}",logParam,e);
 			System.exit(0);
 		}
 	}
 
+	public static void insertUniqueTriplesSPL(String sub , String pred , String lit) {
+		insertUniqueTriplesSPL(sub, pred,lit, true);
+	}
 	
 	/**
 	 *Insere uma tripla RDF no formato sujeito-predicado-literal removendo outra tripla caso já exista
 	 *@param sub sujeito
-	 *@param pred predicado
-	 *@param lit literal
+	 * @param pred predicado
+	 * @param lit literal
+	 * @param commit?
 	 */
-	public static void insertUniqueTriplesSPL(String sub , String pred , String lit) {
-		if(log.isDebugEnabled()) {
-			log.debug("Unique SPL:" + sub + " - " + pred + " - " + lit);
-		}
-		//System.out.println("Unique SPL:" + sub + " - " + pred + " - " + lit);
-		try
-		{
+	public static void insertUniqueTriplesSPL(String sub , String pred , String lit, boolean commit) {
+		String[] logParam = {sub, pred, lit};
+		log.debug("Unique SPL: {} - {} - {}",logParam);
+		try {
 			RepositoryConnection conn = UtilTripleStoreConnection.getConnection();
 
 			ValueFactory f = UtilTripleStoreConnection.getConnection().getRepository().getValueFactory();
 			URI subject = f.createURI(sub);
 			URI property = f.createURI(pred);
 			Literal literal = f.createLiteral(lit);
-
+			
 			conn.remove(subject, property, null);
 			conn.add(subject, property, literal);
-
+			if(commit) {
+				conn.commit();
+			}
 		} catch (RepositoryException e) {
-			log.error("Insertion problem.", e);
-			//e.printStackTrace();
-			log.error("insertUniqueTriplesSPL: "+ sub+" "+pred+" "+lit);
-			//System.out.println("insertUniqueTriplesSPL: "+ sub+" "+pred+" "+lit);
+			log.error("insertUniqueTriplesSPL problem:  {} - {} - {}",logParam, e);
 			System.exit(0);
 		}
 	}
@@ -303,15 +301,11 @@ public class TripleStoreDriver {
 	/**
 	 *Commita o resultado de uma inserção ou deleção para o banco
 	 */
-	public static void commit()
-	{
-		RepositoryConnection conn = UtilTripleStoreConnection.getConnection();
-		try
-		{
-			conn.commit();
-		} catch (Exception e)
-		{
-			e.printStackTrace();
+	public static void commit() {
+		try {
+			UtilTripleStoreConnection.getConnection().commit();
+		} catch (RepositoryException e) {
+			log.error("Commit error!",e);
 		}
 	}
 
