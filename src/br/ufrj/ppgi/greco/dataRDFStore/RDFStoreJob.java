@@ -21,7 +21,7 @@ import br.ufrj.ppgi.greco.util.rdf.TripleStoreDriver;
  * @version 1.0
  */
 public class RDFStoreJob implements Job {
-	Logger log = LoggerFactory.getLogger(RDFStoreJob.class);
+	final Logger log = LoggerFactory.getLogger(RDFStoreJob.class);
 	
 	/**
 	 *Job da tarefa de armazenamento dados em RDF no repositório de triplas
@@ -32,25 +32,37 @@ public class RDFStoreJob implements Job {
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
 		ArrayList<PackageDataTransformed> queueDT = QueueDataTransformed.getQueue();
 		int count = 0;
+		int alive = 0;
 		Timer t = new Timer();
-		 while(queueDT.size() > 0 ) {
-			 PackageDataTransformed pdt = queueDT.get(0);
-			 queueDT.remove(0);
-			 
-			 if(pdt.getType().equals("literal")) {
-				 if(pdt.isUnique()) {
-					 TripleStoreDriver.insertUniqueTriplesSPL(pdt.getSubject(), pdt.getPredicate(), pdt.getLiteral(), false);
-					 ++count;
-				 } else {
-					 TripleStoreDriver.insertTriplesSPL(pdt.getSubject(), pdt.getPredicate(), pdt.getLiteral(), false);
-					 ++count;
-				 }
-			 } else {
-				 TripleStoreDriver.insertTriplesSPO(pdt.getSubject(), pdt.getPredicate(), pdt.getObject(), false);
-				 ++count;
-			 }
-		 }
-		 if(count>0) {
+		while (queueDT.size() > 0) {
+			PackageDataTransformed pdt = queueDT.get(0);
+			if(pdt == null) {
+				continue;
+			}
+			queueDT.remove(0);
+
+			if ("literal".equals(pdt.getType())) {
+				if (pdt.isUnique()) {
+					TripleStoreDriver.insertUniqueTriplesSPL(pdt.getSubject(), pdt.getPredicate(), pdt.getLiteral(), false);
+					++count;
+				} else {
+					TripleStoreDriver.insertTriplesSPL(pdt.getSubject(), pdt.getPredicate(), pdt.getLiteral(), false);
+					++count;
+				}
+			} else {
+				TripleStoreDriver.insertTriplesSPO(pdt.getSubject(), pdt.getPredicate(), pdt.getObject(), false);
+				++count;
+			}
+			++alive;
+			if(alive >= 10000) {
+				log.info("Commit: {} Tempo: {}ms", count, t.getTime());
+				TripleStoreDriver.commit();
+				alive = 0;
+			}
+		}
+		 /*
+		  */
+		 if(count > 0) {
 			TripleStoreDriver.commit();
 			log.info("Finalizada inserção dos recursos dinâmicos. Inseridos: {} Tempo: {}ms", count, t.getTime());
 		 }

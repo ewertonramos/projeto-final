@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.log4j.pattern.LineSeparatorPatternConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +25,7 @@ public class CSVTransformation implements ITransformation {
 	private String withHeader;
 	private Map<String, String> headers;
 	
-	Logger log = LoggerFactory.getLogger(CSVTransformation.class);
+	final Logger log = LoggerFactory.getLogger(CSVTransformation.class);
 	
 	public CSVTransformation(String separatorChar, String withHeader, Map<String, String> headers) {
 		this.separatorChar = separatorChar;
@@ -34,6 +35,7 @@ public class CSVTransformation implements ITransformation {
 
 	@Override
 	public ArrayList<HashMap<String, ArrayList<String>>> getValue(String data, String group, HashMap<String, String> transformationsIndexedByLabel) {
+		log.info("Starting CSV transformation...");
 		ArrayList<HashMap<String, ArrayList<String>>> result = new ArrayList<HashMap<String, ArrayList<String>>>();
 		Timer t = new Timer();
 		try {
@@ -67,7 +69,9 @@ public class CSVTransformation implements ITransformation {
 				
 				ArrayList<ColunaValor<String, String>> values = new ArrayList<ColunaValor<String, String>>();
 				for (Integer usedColumnIndex : usedColumnsIndex) {
-					values.add(new ColunaValor<String, String>(usedColumnIndex.toString(), lineList.get(usedColumnIndex - 1)));
+					if(lineList.size() > usedColumnIndex - 1) {
+						values.add(new ColunaValor<String, String>(usedColumnIndex.toString(), lineList.get(usedColumnIndex - 1)));
+					}
 				}
 				
 				String key = mapKey.substring(1);
@@ -131,8 +135,13 @@ public class CSVTransformation implements ITransformation {
 	}
 	
 	private Integer asIndex(String header) {
-		String h = this.headers.get(header);
-		 Integer hindex = null;
+		String h;
+		if(!hasHeader()) {
+			h = header; 
+		} else {
+			h = this.headers.get(header);
+		}
+		Integer hindex = null;
 		if(h != null) {
 			try {
 				hindex = Integer.parseInt(h);

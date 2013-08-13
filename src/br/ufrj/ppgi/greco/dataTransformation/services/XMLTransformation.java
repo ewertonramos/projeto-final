@@ -11,12 +11,15 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 import br.ufrj.ppgi.greco.dataTransformation.interfaces.ITransformation;
+import br.ufrj.ppgi.greco.util.Timer;
 
 
 /**
@@ -25,7 +28,8 @@ import br.ufrj.ppgi.greco.dataTransformation.interfaces.ITransformation;
  * @version 1.0
  */
 public class XMLTransformation implements ITransformation {
-
+	
+	Logger log = LoggerFactory.getLogger(XMLTransformation.class);
 	DocumentBuilderFactory docFactory;
 	XPathFactory xPathfactory;
 
@@ -46,7 +50,7 @@ public class XMLTransformation implements ITransformation {
 	@Override
 	public ArrayList<HashMap<String, ArrayList<String>>> getValue(String xmlInput , String groupPath , HashMap<String, String> transformation) {
 		ArrayList<HashMap<String, ArrayList<String>>> result = new ArrayList<HashMap<String, ArrayList<String>>>();
-
+		Timer t = new Timer();
 		try {
 			// System.out.println("Com: "+xmlInput);
 			xmlInput = xmlInput.replaceAll("xmlns=\"(.*?)\"", "");
@@ -62,8 +66,7 @@ public class XMLTransformation implements ITransformation {
 			XPath xpath = factory.newXPath();
 
 			XPathExpression expr = xpath.compile(groupPath);
-			NodeList nodes = (NodeList) expr.evaluate(doc,
-					XPathConstants.NODESET);
+			NodeList nodes = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
 
 			// for each group
 			for (int i = 0; i < nodes.getLength(); i++) {
@@ -73,8 +76,7 @@ public class XMLTransformation implements ITransformation {
 				// for each transformation path
 				for (String transfPath : transformation.keySet()) {
 					expr = xpath.compile(transfPath);
-					NodeList nodes2 = (NodeList) expr.evaluate(e,
-							XPathConstants.NODESET);
+					NodeList nodes2 = (NodeList) expr.evaluate(e, XPathConstants.NODESET);
 
 					ArrayList<String> dataValues = new ArrayList<String>();
 					for (int j = 0; j < nodes2.getLength(); j++) {
@@ -84,14 +86,13 @@ public class XMLTransformation implements ITransformation {
 
 				}
 				result.add(res);
-
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("Problem.",e);
 			System.exit(0);
 		}
-
+		log.info("Transformação XML concluída. {} linhas em {}ms", result.size(), t.getTime());
 		return result;
 	}
 

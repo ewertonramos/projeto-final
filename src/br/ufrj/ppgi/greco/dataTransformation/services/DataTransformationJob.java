@@ -27,7 +27,7 @@ import br.ufrj.ppgi.greco.util.rdf.CommonProperties;
  */
 public class DataTransformationJob implements Job {
 	
-	Logger log = LoggerFactory.getLogger(DataTransformationJob.class);
+	final Logger log = LoggerFactory.getLogger(DataTransformationJob.class);
 	
 	/**
 	 *Job da tarefa de transformação de dados

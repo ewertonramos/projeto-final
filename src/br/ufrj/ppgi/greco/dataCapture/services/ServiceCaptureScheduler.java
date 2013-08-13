@@ -11,6 +11,8 @@ import org.quartz.SchedulerFactory;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import br.ufrj.ppgi.greco.util.config.ConfigServices;
 
@@ -22,29 +24,25 @@ import br.ufrj.ppgi.greco.util.config.ConfigServices;
 public class ServiceCaptureScheduler
 {
 	private static Scheduler sched;
-	
+	static final Logger log = LoggerFactory.getLogger(ServiceCaptureScheduler.class);
 	/**
 	 *Inicia o serviço de captura de dados de sensores
 	 *@param params HashMap com as configurações dos serviços REST a serem consumidos.
 	 */
-	public static void run(HashMap<String, ConfigServices> params) // params <serviceuri, timestamp>
-	{
-		try
-		{
+	public static void run(HashMap<String, ConfigServices> params) {// params <serviceuri,  timestamp>
+		try {
 			SchedulerFactory schedFact = new StdSchedulerFactory();
 			sched = schedFact.getScheduler();
 
 			sched.start();
 
-			for (String key : params.keySet())
-			{
+			for (String key : params.keySet()) {
 				ConfigServices serviceConf = params.get(key);
 
 				JobDetail job = JobBuilder.newJob(ServiceCaptureJob.class).withIdentity("job-" + serviceConf.getId(), "group-" + serviceConf.getId()).build();
-				System.out.println("Type: "+serviceConf.getType()+"\n\n\n");
+				log.info("Service ID: {}, Type: {}\n", serviceConf.getId(), serviceConf.getType());
 				
-				if (!serviceConf.getType().equals("webhook"))
-				{
+				if (!serviceConf.getType().equals("webhook")) {
 					// setting parameters to job
 					job.getJobDataMap().put("url", serviceConf.getService());
 					job.getJobDataMap().put("apikey", "eOPKg7QxTQwnj_8PLyMK97sw9X2SAKx0NUM4SzdsTEhncz0g");
@@ -55,27 +53,20 @@ public class ServiceCaptureScheduler
 					sched.scheduleJob(job, trigger);
 				}
 			}
-		} 
-		catch (Exception e)
-		{
-			e.printStackTrace();
+		} catch (Exception e) {
+			log.error("Problem.",e);
 		}
 	}
 	
 	/**
 	 *Pára o serviço de captura de dados de sensores
 	 */
-	public static void stop()
-	{
-		try
-		{
+	public static void stop() {
+		try {
 			sched.shutdown();
-		} 
-		catch (SchedulerException e)
-		{
+		} catch (SchedulerException e) {
 			e.printStackTrace();
 		}
 	}
-	
 
 }

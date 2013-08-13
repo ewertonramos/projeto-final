@@ -34,7 +34,7 @@ public class BootInitializer {
 	private HashMap<String, ConfigServices> servicesConfig;
 	private HashMap<String, ArrayList<ConfigTransformation>> transformationsConfig;
 	private HashMap<String, ConfigVirtualTransformation> virtualTransf;
-	Logger log = LoggerFactory.getLogger(BootInitializer.class);
+	final Logger log = LoggerFactory.getLogger(BootInitializer.class);
 	
 	public BootInitializer() {
 		this.resourcesConfig = new HashMap<String, ConfigResources>();

@@ -3,6 +3,8 @@ package br.ufrj.ppgi.greco.dataCapture.services;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import javax.ws.rs.core.MediaType;
+
 import org.quartz.Job;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
@@ -50,8 +52,8 @@ public class ServiceCaptureJob implements Job
 
 		// setting api key
 		Builder b = webResource.getRequestBuilder();
-		b.accept("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-		
+		//b.accept("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+		b.accept(MediaType.TEXT_HTML_TYPE,MediaType.APPLICATION_XHTML_XML_TYPE,MediaType.APPLICATION_XML_TYPE,MediaType.WILDCARD_TYPE);
 		if(apiKey != null && apiKey != "")
 			b.header("X-ApiKey",apiKey);
 

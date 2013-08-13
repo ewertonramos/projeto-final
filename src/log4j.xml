@@ -16,16 +16,14 @@
 	
 	<logger name="br.com.caelum.vraptor">
 		<level value="INFO" />
-		<appender-ref ref="stdout" />
 	</logger>
 
 	<logger name="org.springframework">
 		<level value="INFO" />
-		<appender-ref ref="stdout" />
 	</logger>
 	
 	<logger name="org.quartz">
-    	<level value="FATAL" />
+    	<level value="warn" />
 	</logger>
 	
 	<logger name="br.ufrj.ppgi.greco.dataTransformation.services">
@@ -33,8 +31,7 @@
 	</logger>
 	
 	<logger name="br.ufrj.ppgi.greco.util.rdf">
-    	<level value="debug" />
-		<appender-ref ref="fileout" />
+    	<level value="info" />
 	</logger>
 	
 	<logger name="br.ufrj.ppgi.greco">
@@ -44,8 +41,6 @@
 	<root>
 		<level value="error"/>
 		<appender-ref ref="stdout" />
-		<!--
 		<appender-ref ref="fileout" /> 
-		-->
 	</root>
 </log4j:configuration>

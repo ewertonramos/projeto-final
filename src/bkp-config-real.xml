@@ -1,0 +1,192 @@
+<config>
+	<services>
+		<service id="1">
+			<url>http://api.dataprev.gov.br/previdencia/anuario/2009/acidentes-do-trabalho.csv</url>
+			<refresh-rate>0 30 * * * ? *</refresh-rate>
+			<return-type>csv</return-type>
+		</service>
+		<service id="2">
+			<url>http://www.camara.gov.br/sitcamaraws/deputados.asmx/ObterDeputados</url>
+			<refresh-rate>0 57 * * * ? *</refresh-rate>
+			<return-type>xml</return-type>
+		</service>
+	</services>
+
+
+	
+	<resources>
+		<resource id="3" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#IBGE</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#IBGE</rdf-type>
+			
+			<static-literals>
+				<static-literal>
+					<value>Instituto Brasileiro de Geografia e Estatística</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasNome</parent-property>
+				</static-literal>
+			</static-literals>
+			
+			<headers>
+			</headers>
+			
+			<dynamic-literals>
+			</dynamic-literals>
+			
+			<object-properties>
+			</object-properties>
+		</resource>
+		
+		
+		<resource id="4" type="dynamic"  separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource/AcidenteDeTrabalho#</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#AcidentesTrabalho</rdf-type>
+			
+			<static-literals>
+			</static-literals>
+			
+			<headers>
+				<header>
+					<index>1</index>
+					<name>ano</name>
+				</header>
+				<header>
+					<index>2</index>
+					<name>cod_ibge</name>
+				</header>
+				<header>
+					<index>3</index>
+					<name>municipio_nome</name>
+				</header>
+				<header>
+					<index>4</index>
+					<name>uf</name>
+				</header>
+				<header>
+					<index>5</index>
+					<name>acidentes_com_cat_tipicos</name>
+				</header>
+				<header>
+					<index>6</index>
+					<name>acidentes_com_cat_trajeto</name>
+				</header>
+				<header>
+					<index>7</index>
+					<name>acidentes_com_cat_doenca_profissional</name>
+				</header>
+				<header>
+					<index>8</index>
+					<name>quantidade_obtidos</name>
+				</header>
+				<header>
+					<index>9</index>
+					<name>acidentes_sem_cat</name>
+				</header>
+			</headers>
+			
+			<dynamic-literals>
+				<dynamic-literal service-id="1" >
+					<group>municipio_nome</group>
+					<literal>
+						<value><![CDATA[ano]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasAno</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[cod_ibge]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasCodigoIBGE</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[municipio_nome]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasNomeMunicipio</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[uf]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasUF</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[acidentes_com_cat_tipicos]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasAcidentesComCATTipicos</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[acidentes_com_cat_trajeto]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasAcidentesComCATTrajeto</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[acidentes_com_cat_doenca_profissional]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasAcidentesComCATDoencaProfissional</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[quantidade_obtidos]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasQuantidadeObitos</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[acidentes_sem_cat]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasAcidentesSemCAT</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			
+			<object-properties>
+				<object-property type="nondominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasOcorrencia</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#IBGE</object-uri>
+				</object-property>
+			</object-properties> 
+			
+		</resource>
+		
+		<resource id="5" type="dynamic">
+			<uri>http://greco.ppgi.ufrj.br/resource/Deputado#</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#CamaraDeputados</rdf-type>
+			
+			<static-literals>
+			</static-literals>
+			
+			<dynamic-literals>
+				<dynamic-literal service-id="2">
+					<group>//deputado[uf="RJ"]</group>
+<!--
+ 					<literal>
+						<value><![CDATA[/ideCadastro/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasIdeCadastro</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[/matricula/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasMatricula</parent-property>
+					</literal>
+ -->
+ 					<literal>
+						<value><![CDATA[nome/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasNome</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[nomeParlamentar/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasNomeParlamentar</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[uf/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasUF</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[partido/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasPartido</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[fone/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasTelefone</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[email/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasEmail</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			
+			<object-properties>
+				<object-property type="nondominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasLigacaoDeputados</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#IBGE</object-uri>
+				</object-property>
+			</object-properties>
+		</resource>
+	</resources>
+</config>
