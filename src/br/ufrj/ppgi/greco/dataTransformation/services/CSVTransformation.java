@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.log4j.pattern.LineSeparatorPatternConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,10 +20,11 @@ import br.ufrj.ppgi.greco.util.Timer;
 
 public class CSVTransformation implements ITransformation {
 
+	private static final String FILTER_CHAR = "/";
 	private String separatorChar;
 	private String withHeader;
 	private Map<String, String> headers;
-	
+	private final Map<Integer, String> groupMap = new HashMap<Integer,String>();
 	final Logger log = LoggerFactory.getLogger(CSVTransformation.class);
 	
 	public CSVTransformation(String separatorChar, String withHeader, Map<String, String> headers) {
@@ -51,37 +51,52 @@ public class CSVTransformation implements ITransformation {
 				configureHeader(reader.readNext());
 			}
 			List<String> groupList = Arrays.asList(group.split(separator.toString()));
-			ArrayList<Integer> groupIndexList = asColumnIndexList(groupList);
+			ArrayList<Integer> groupIndexList = buildGroupMap(groupList);
 			
 			Collection<String> usedColumns = transformationsIndexedByLabel.keySet();
 			ArrayList<Integer> usedColumnsIndex= asColumnIndexList(usedColumns);
-			
 			
 			List<String> lineList = null;
 			String[] line = reader.readNext();
 			while (line != null) {
 				lineList = Arrays.asList(line);
+				line = reader.readNext();
+				
+				boolean filterValues = false;
 				
 				StringBuilder mapKey = new StringBuilder();
 				for (Integer groupIndexColumn : groupIndexList) {
-					mapKey.append(this.separatorChar).append(lineList.get(groupIndexColumn - 1));
-				}
-				
-				ArrayList<ColunaValor<String, String>> values = new ArrayList<ColunaValor<String, String>>();
-				for (Integer usedColumnIndex : usedColumnsIndex) {
-					if(lineList.size() > usedColumnIndex - 1) {
-						values.add(new ColunaValor<String, String>(usedColumnIndex.toString(), lineList.get(usedColumnIndex - 1)));
+					String value = lineList.get(groupIndexColumn - 1);
+					if(hasValueFilter(this.groupMap.get(groupIndexColumn))) {
+						String g = this.groupMap.get(groupIndexColumn);
+						
+						String filter = g.substring(g.indexOf(FILTER_CHAR)+1);
+						
+						if(value.equals(filter)) {
+							mapKey.append(this.separatorChar).append(value);
+						} else {
+							filterValues = true;
+							break;
+						}
+					} else {
+						mapKey.append(this.separatorChar).append(value);
 					}
 				}
-				
-				String key = mapKey.substring(1);
-				if(map.containsKey(key)) {
-					map.get(key).addAll(values);
-				} else {
-					map.put(key, values);
+				if(!filterValues) {
+					ArrayList<ColunaValor<String, String>> values = new ArrayList<ColunaValor<String, String>>();
+					for (Integer usedColumnIndex : usedColumnsIndex) {
+						if(lineList.size() > usedColumnIndex - 1) {
+							values.add(new ColunaValor<String, String>(usedColumnIndex.toString(), lineList.get(usedColumnIndex - 1)));
+						}
+					}
+					
+					String key = mapKey.substring(1);
+					if(map.containsKey(key)) {
+						map.get(key).addAll(values);
+					} else {
+						map.put(key, values);
+					}
 				}
-				
-				line = reader.readNext();
 			}
 			//Transform
 			for (Entry<String, List<ColunaValor<String, String>>> groupEntry : map.entrySet()) {
@@ -89,10 +104,20 @@ public class CSVTransformation implements ITransformation {
 				for (Entry<String, String> transEntry : transformationsIndexedByLabel.entrySet()) {
 					ArrayList<String> values = new ArrayList<String>();
 					for (ColunaValor<String, String> groupValue : groupEntry.getValue()) {
-						if (groupValue.column.equals(asIndex(transEntry.getKey()).toString())) {
-							values.add(groupValue.value);
-							break;
+						
+						String key = transEntry.getKey();
+						if(hasValueFilter(key)) {
+							String filter = key.substring(key.indexOf(FILTER_CHAR)+1); 
+							key = key.substring(0,key.indexOf(FILTER_CHAR));
+							if (groupValue.column.equals(asIndex(key).toString()) && filter.equals(groupValue.value)) {
+								values.add(groupValue.value);
+							}
+						} else {
+							if (groupValue.column.equals(asIndex(transEntry.getKey()).toString())) {
+								values.add(groupValue.value);
+							}
 						}
+						
 					}
 					mapping.put(transEntry.getValue(), values);
 				}
@@ -104,6 +129,32 @@ public class CSVTransformation implements ITransformation {
 		}
 		log.info("Transformação CSV concluída. {} linhas em {}ms", result.size(), t.getTime());
 		return result;
+	}
+
+	private ArrayList<Integer> buildGroupMap(List<String> groupList) {
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		for (String groupItem : groupList) {
+			String groupItemWithFilter = groupItem;
+			if(hasValueFilter(groupItem)){
+				groupItem = groupItem.substring(0, groupItem.indexOf(FILTER_CHAR));
+			}
+			
+			Integer index = null;
+			if (hasHeader()) {
+				index = asIndex(groupItem);
+				result.add(index);
+				this.groupMap.put(index, groupItemWithFilter);
+			} else {
+				index = Integer.parseInt(groupItem);
+				result.add(index);
+				this.groupMap.put(index, groupItemWithFilter);
+			}
+		}
+		return asColumnIndexList(groupList);
+	}
+
+	private boolean hasValueFilter(String key) {
+		return key.contains(FILTER_CHAR);
 	}
 
 	private boolean hasHeader() {
@@ -121,13 +172,13 @@ public class CSVTransformation implements ITransformation {
 
 	private ArrayList<Integer> asColumnIndexList(Collection<String> comumnList) {
 		ArrayList<Integer> result = new ArrayList<Integer>();
-		if(hasHeader()){
-			for (String groupItem : comumnList) {
-				Integer hindex = asIndex(groupItem);
-				result.add(hindex);
+		for (String groupItem : comumnList) {
+			if(hasValueFilter(groupItem)){
+				groupItem = groupItem.substring(0, groupItem.indexOf(FILTER_CHAR));
 			}
-		} else {
-			for (String groupItem : comumnList) {
+			if (hasHeader()) {
+				result.add(asIndex(groupItem));
+			} else {
 				result.add(Integer.parseInt(groupItem));
 			}
 		}

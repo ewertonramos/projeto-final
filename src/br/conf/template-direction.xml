@@ -1,0 +1,66 @@
+		<resource id="**NUMERO**" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#**ESTACAO**To**DESTINO1**</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/**ESTACAO**,destination/**DESTINO1**</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="**NUMERO1**" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#**ESTACAO**To**DESTINO2**</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/**ESTACAO**,destination/**DESTINO2**</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="**NUMEORO2**" type="static" separator-char="," with-header="true"> <!--DEPENDE-->
+			<uri>http://greco.ppgi.ufrj.br/resource#**ESTACAO**To**DESTINO3**</uri> <!--DEPENDE-->
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type> <!--DEPENDE-->
+			<static-literals> <!--DEPENDE-->
+			</static-literals> <!--DEPENDE-->
+			<headers> <!--DEPENDE-->
+				<header><index>4</index> <name>destination</name></header> <!--DEPENDE-->
+				<header><index>6</index> <name>stop</name></header> <!--DEPENDE-->
+				<header><index>7</index> <name>secondsAway</name></header> <!--DEPENDE-->
+			</headers> <!--DEPENDE-->
+			<dynamic-literals> <!--DEPENDE-->
+				<dynamic-literal service-id="1" type="unique"> <!--DEPENDE-->
+					<group>stop/**ESTACAO**,destination/**DESTINO3**</group> <!--DEPENDE-->
+					<literal> <!--DEPENDE-->
+						<value><![CDATA[secondsAway]]></value> <!--DEPENDE-->
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property> <!--DEPENDE-->
+					</literal> <!--DEPENDE-->
+				</dynamic-literal> <!--DEPENDE-->
+			</dynamic-literals> <!--DEPENDE-->
+			<object-properties> <!--DEPENDE-->
+			</object-properties> <!--DEPENDE-->
+		</resource> <!--DEPENDE-->

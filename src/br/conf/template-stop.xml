@@ -1,0 +1,30 @@
+		<resource id="**NUMERO**" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#**ESTACAO**</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>**ESTACAO**</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Point**ESTACAO**</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#**ESTACAO**To**DESTINO1**</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#**ESTACAO**To**DESTINO2**</object-uri>	
+				</object-property>
+				<object-property type="dominant"> <!--DEPENDE-->
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property> <!--DEPENDE-->
+					<object-uri>http://greco.ppgi.ufrj.br/resource#**ESTACAO**To**DESTINO3**</object-uri> <!--DEPENDE-->
+				</object-property> <!--DEPENDE-->
+			</object-properties> 
+		</resource>

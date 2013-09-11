@@ -1,80 +1,195 @@
 <config>
 	<services>
 		<service id="1">
-			<url>http://api.convenios.gov.br/siconv/v1/consulta/propostas.xml
-			</url>
-			<refresh-rate>1800</refresh-rate>
+			<url>http://www.ibge.gov.br/estadosat/download/rj_censodemog2010_trab.csv</url>
+			<refresh-rate>0 25 * * * ? *</refresh-rate>
+			<return-type>csv</return-type>
+		</service>
+		<service id="2">
+			<url>http://api.dataprev.gov.br/previdencia/anuario/2009/acidentes-do-trabalho.xml</url>
+			<refresh-rate>0 25 * * * ? *</refresh-rate>
 			<return-type>xml</return-type>
 		</service>
 	</services>
 
+	
 	<resources>
-		<!-- -->
 		<resource id="1" type="static">
-			<uri>http://greco.ppgi.ufrj.br/resource#teste123</uri>
-			<rdf-type>http://greco.ppgi.ufrj/ontology/concepts#novela </rdf-type>
-
+			<uri>http://greco.ppgi.ufrj.br/resource#IBGE</uri>
+			<rdf-type>http://dbpedia.org/page/Brazilian_Institute_of_Geography_and_Statistics</rdf-type>
+			
 			<static-literals>
 				<static-literal>
-					<value>globo</value>
-					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasChannel
-					</parent-property>
+					<value>Instituto Brasileiro de Geografia e Estatística</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#temNome</parent-property>
 				</static-literal>
 			</static-literals>
-
+			
+			<headers>
+			</headers>
+			
 			<dynamic-literals>
-				<dynamic-literal service-id="1" type="unique">
-					<group>//proposta</group>
-					<literal>
-						<value><![CDATA[/data_cadastramento_proposta/text()]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasUpdatedTimeStamp
-						</parent-property>
-					</literal>
-				</dynamic-literal>
 			</dynamic-literals>
-
+			
 			<object-properties>
-				<object-property type="dominant">
-					<property>http://greco.ppgi.ufrj/ontology/properties#Description
-					</property>
-					<object-uri>http://dbpedia.org/resource/Novela</object-uri>
-				</object-property>
 			</object-properties>
-
 		</resource>
-
-		<resource id="2" type="dynamic">
-
-			<uri>http://greco.ppgi.ufrj.br/resource#</uri>
-			<rdf-type>http://greco.ppgi.ufrj/ontology/concepts#twitter</rdf-type>
-
-
+		
+		<resource id="2" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#RioDeJaneiro</uri>
+			<rdf-type>http://pt.dbpedia.org/page/Rio_de_Janeiro</rdf-type>
+			
+			<static-literals>
+				<static-literal>
+					<value>Rio de Janeiro</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#temNome</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>RJ</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#temSigla</parent-property>
+				</static-literal>
+			</static-literals>
+			
+			<headers>
+			</headers>
+			
+			<dynamic-literals>
+			</dynamic-literals>
+			
+			<object-properties>
+			</object-properties>
+		</resource>
+		
+		<resource id="3" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#DataPrev</uri>
+			<rdf-type>http://pt.dbpedia.org/page/DATAPREV</rdf-type>
+			
+			<headers>
+				<header><index>1</index> <name>currentTime</name></header>
+				<header><index>2</index> <name>line</name></header>
+				<header><index>3</index> <name>tripId</name></header>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>5</index> <name>stopid</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+				<header><index>8</index> <name>posTimestamp</name></header>
+				<header><index>9</index> <name>trainNumber</name></header>
+				<header><index>10</index> <name>posLatitude</name></header>
+				<header><index>11</index> <name>posLongitude</name></header>
+				<header><index>12</index> <name>posHeading</name></header>
+				<header><index>13</index> <name>note</name></header>
+			</headers>
+			
+			<static-literals>
+				<static-literal>
+					<value>Empresa de Tecnologia e Informações da Previdência Social</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#temNome</parent-property>
+				</static-literal>
+			</static-literals>
+			
+			<headers>
+			</headers>
+			
+			<dynamic-literals>
+			</dynamic-literals>
+			
+			<object-properties>
+			</object-properties>
+		</resource>
+		
+		<resource id="4" type="dynamic"  separator-char=";" with-header="false">
+			<uri>http://greco.ppgi.ufrj.br/resource/CensoDeTrabalho#</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#CensoDeTrabalho</rdf-type>
+			
 			<static-literals>
 			</static-literals>
-
+			
+			<headers>
+				<header>
+					<index>1</index>
+					<name>descricao</name>
+				</header>
+				<header>
+					<index>2</index>
+					<name>valor</name>
+				</header>
+			</headers>
+			
 			<dynamic-literals>
-				<dynamic-literal service-id="1">
-					<group>//proposta</group>
-
+				<dynamic-literal service-id="1" >
+					<group>1</group>
 					<literal>
-						<value><![CDATA[/justificativa_resumida/text()]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasJustificativa
-						</parent-property>
+						<value><![CDATA[1]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temDescricao</parent-property>
 					</literal>
-
 					<literal>
-						<value><![CDATA[/valor_global/text()]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasValor
-						</parent-property>
+						<value><![CDATA[2]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temValor</parent-property>
 					</literal>
 				</dynamic-literal>
 			</dynamic-literals>
-
+			
 			<object-properties>
 				<object-property type="nondominant">
-					<property>http://greco.ppgi.ufrj/ontology/properties#hasMessage
-					</property>
-					<object-uri>http://greco.ppgi.ufrj.br/resource#teste12</object-uri>
+					<property>http://greco.ppgi.ufrj/ontology/properties#temPesquisaCenso2010</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#IBGE</object-uri>
+				</object-property>
+				<object-property type="nondominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#temDadosCenso</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#RioDeJaneiro</object-uri>
+				</object-property>
+			</object-properties> 
+		</resource>
+		
+		<resource id="5" type="dynamic">
+			<uri>http://greco.ppgi.ufrj.br/resource/AcidenteDeTrabalho#</uri>
+			<rdf-type>http://pt.dbpedia.org/page/Comunica%C3%A7%C3%A3o_de_Acidente_de_Trabalho</rdf-type>
+			
+			<static-literals>
+			</static-literals>
+			
+			<dynamic-literals>
+				<dynamic-literal service-id="2">
+					<group>//registro[municipio[@uf="RJ"]]</group>
+ 					<literal>
+						<value><![CDATA[municipio/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temNomeMunicipio</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[municipio/@cod_ibge]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temCodigoMunicipioIBGE</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[quantidade/sem_cat/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temQtdAcidentesSemCat</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[quantidade/com_cat/tipicos/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temQtdAcidenteComCatTipicos</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[quantidade/com_cat/trajeto/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temQtdAcidenteComCatTrajeto</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[quantidade/com_cat/doenca/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temQtdAcidenteComCatDoenca</parent-property>
+					</literal>
+					<literal>
+						<value><![CDATA[quantidade/obitos/text()]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temQtdObito</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			
+			<object-properties>
+				<object-property type="nondominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#temOcorrencia</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#RioDeJaneiro</object-uri>
+				</object-property>
+				<object-property type="nondominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#temEstatistica</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#DataPrev</object-uri>
 				</object-property>
 			</object-properties>
 		</resource>

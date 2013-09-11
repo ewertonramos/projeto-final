@@ -1,157 +1,2911 @@
 <config>
 	<services>
+		<!-- SubWay -->
 		<service id="1">
-			<url>http://www.ibge.gov.br/estadosat/download/rj_censodemog2010_trab.csv</url>
-			<refresh-rate>0 35 * * * ? *</refresh-rate>
+			<url>http://developer.mbta.com/lib/rthr/red.csv</url>
+			<refresh-rate>0/20 * * * * ? *</refresh-rate>
 			<return-type>csv</return-type>
 		</service>
-		<service id="2">
-			<url>http://api.dataprev.gov.br/previdencia/anuario/2009/acidentes-do-trabalho.xml</url>
-			<refresh-rate>0 37 * * * ? *</refresh-rate>
-			<return-type>xml</return-type>
-		</service>
 	</services>
-
 	
 	<resources>
-		<resource id="1" type="static">
-			<uri>http://greco.ppgi.ufrj.br/resource#IBGE</uri>
-			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#IBGE</rdf-type>
-			
+<!-- ****************************************************-PONTOS-****************************************************** #################### -->
+		<resource id="1" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointAlewife</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
 			<static-literals>
 				<static-literal>
-					<value>Instituto Brasileiro de Geografia e Estatística</value>
-					<parent-property>http://greco.ppgi.ufrj/ontology/properties#temNome</parent-property>
+					<value>42.395261</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.14244</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
 				</static-literal>
 			</static-literals>
-			
-			<headers>
-			</headers>
-			
 			<dynamic-literals>
 			</dynamic-literals>
-			
 			<object-properties>
-			</object-properties>
+			</object-properties> 
 		</resource>
-		
-		<resource id="2" type="static">
-			<uri>http://greco.ppgi.ufrj.br/resource#RioDeJaneiro</uri>
-			<rdf-type>http://pt.dbpedia.org/page/Rio_de_Janeiro</rdf-type>
-			
+		<resource id="2" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointDavis</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
 			<static-literals>
 				<static-literal>
-					<value>Rio de Janeiro</value>
-					<parent-property>http://greco.ppgi.ufrj/ontology/properties#temNome</parent-property>
+					<value>42.39662</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
 				</static-literal>
 				<static-literal>
-					<value>RJ</value>
-					<parent-property>http://greco.ppgi.ufrj/ontology/properties#temSigla</parent-property>
+					<value>-71.122527</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
 				</static-literal>
 			</static-literals>
-			
-			<headers>
-			</headers>
-			
 			<dynamic-literals>
 			</dynamic-literals>
-			
 			<object-properties>
-			</object-properties>
+			</object-properties> 
 		</resource>
-		
-		<resource id="3" type="dynamic"  separator-char=";" with-header="false">
-			<uri>http://greco.ppgi.ufrj.br/resource/CensoTrabalho#</uri>
-			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts#CensoTrabalho</rdf-type>
-			
+		<resource id="3" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointPorter Square</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
 			<static-literals>
+				<static-literal>
+					<value>42.388353</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.119159</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
 			</static-literals>
-			
-			<headers>
-				<header>
-					<index>1</index>
-					<name>descricao</name>
-				</header>
-				<header>
-					<index>2</index>
-					<name>valor</name>
-				</header>
-			</headers>
-			
 			<dynamic-literals>
-				<dynamic-literal service-id="1" >
-					<group>1</group>
-					<literal>
-						<value><![CDATA[1]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temDescricao</parent-property>
-					</literal>
-					<literal>
-						<value><![CDATA[2]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temValor</parent-property>
-					</literal>
-				</dynamic-literal>
 			</dynamic-literals>
-			
 			<object-properties>
-				<object-property type="nondominant">
-					<property>http://greco.ppgi.ufrj/ontology/properties#temPesquisaCenso2010</property>
-					<object-uri>http://greco.ppgi.ufrj.br/resource#IBGE</object-uri>
+			</object-properties> 
+		</resource>
+		<resource id="4" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointHarvard Square</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.373936</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.118917</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="5" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointCentral Square</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.365314</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.103666</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="6" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointKendall</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.362427</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.086058</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="7" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointCharles/MGH</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.361279</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.070493</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="8" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointPark Street</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.356332</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.062202</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="9" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointDowntown Crossing</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.355453</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.060465</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="10" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointSouth</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.352573</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.055428</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="11" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointBroadway</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.342793</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.057117</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="12" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointAndrew</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.329752</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.056979</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="13" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointJFK/UMass</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.321065</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.052545</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="14" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointNorth Quincy</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.274957</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.029307</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="15" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointWollaston</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.265972</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.019721</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="16" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointQuincy Center</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.250879</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.004798</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="17" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointQuincy Adams</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.232848</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.007034</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="18" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.20855</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.00085</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="19" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointSavin Hill</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.311099</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.053175</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="20" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointFields Corner</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.299992</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.061516</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="21" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointShawmut</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.293712</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.065912</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="22" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.284219</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.063229</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="23" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointCedar Grove</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.279712</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.060327</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="24" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointButler</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.272253</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.062453</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="25" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointMilton</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.270093</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.067612</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="26" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointCentral Avenue</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.269965</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.073249</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="27" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointValley Road</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.267772</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.083025</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="28" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointCapen Street</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.267622</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.087436</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="29" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#PointMattapan</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>42.267586</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>-71.092021</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+
+<!-- ****************************************************-ESTAÇÕES-**************************************************** #################### -->
+		<resource id="101" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Alewife</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Alewife</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointAlewife</object-uri>	
 				</object-property>
-				<object-property type="nondominant">
-					<property>http://greco.ppgi.ufrj/ontology/properties#temEstadoReferencia</property>
-					<object-uri>http://greco.ppgi.ufrj.br/resource#RioDeJaneiro</object-uri>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#AlewifeToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#AlewifeToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant"> 
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property> 
+					<object-uri>http://greco.ppgi.ufrj.br/resource#AlewifeToAlewife</object-uri> 
+				</object-property> 
+			</object-properties> 
+		</resource>
+		<resource id="102" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Davis</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Davis</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointDavis</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#DavisToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#DavisToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant"> 
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property> 
+					<object-uri>http://greco.ppgi.ufrj.br/resource#DavisToAlewife</object-uri> 
+				</object-property> 
+			</object-properties> 
+		</resource>
+		<resource id="103" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Porter Square</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Porter Square</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointPorter Square</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Porter SquareToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Porter SquareToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant"> 
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property> 
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Porter SquareToAlewife</object-uri> 
+				</object-property> 
+			</object-properties> 
+		</resource>
+		<resource id="104" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Harvard Square</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Harvard Square</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointHarvard Square</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Harvard SquareToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Harvard SquareToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant"> 
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property> 
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Harvard SquareToAlewife</object-uri> 
+				</object-property> 
+			</object-properties> 
+		</resource>
+		<resource id="105" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Central Square</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Central Square</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointCentral Square</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Central SquareToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Central SquareToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant"> 
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property> 
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Central SquareToAlewife</object-uri> 
+				</object-property> 
+			</object-properties> 
+		</resource>
+		<resource id="106" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Kendall</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Kendall</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointKendall</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#KendallToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#KendallToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant"> 
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property> 
+					<object-uri>http://greco.ppgi.ufrj.br/resource#KendallToAlewife</object-uri> 
+				</object-property> 
+			</object-properties> 
+		</resource>
+		<resource id="107" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Charles/MGH</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Charles/MGH</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointCharles/MGH</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Charles/MGHToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Charles/MGHToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant"> 
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property> 
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Charles/MGHToAlewife</object-uri> 
+				</object-property> 
+			</object-properties> 
+		</resource>
+		<resource id="108" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Park Street</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Park Street</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointPark Street</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Park StreetToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Park StreetToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant"> 
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property> 
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Park StreetToAlewife</object-uri> 
+				</object-property> 
+			</object-properties> 
+		</resource>
+		<resource id="109" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Downtown Crossing</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Downtown Crossing</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointDowntown Crossing</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Downtown CrossingToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Downtown CrossingToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant"> 
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property> 
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Downtown CrossingToAlewife</object-uri> 
+				</object-property> 
+			</object-properties> 
+		</resource>
+		<resource id="110" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#South</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>South</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointSouth</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#SouthToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#SouthToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant"> 
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property> 
+					<object-uri>http://greco.ppgi.ufrj.br/resource#SouthToAlewife</object-uri> 
+				</object-property> 
+			</object-properties> 
+		</resource>
+		<resource id="111" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Broadway</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Broadway</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointBroadway</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#BroadwayToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#BroadwayToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant"> 
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property> 
+					<object-uri>http://greco.ppgi.ufrj.br/resource#BroadwayToAlewife</object-uri> 
+				</object-property> 
+			</object-properties> 
+		</resource>
+		<resource id="112" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Andrew</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Andrew</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointAndrew</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#AndrewToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#AndrewToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant"> 
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property> 
+					<object-uri>http://greco.ppgi.ufrj.br/resource#AndrewToAlewife</object-uri> 
+				</object-property> 
+			</object-properties> 
+		</resource>
+		<resource id="113" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#JFK/UMass</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>JFK/UMass</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointJFK/UMass</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#JFK/UMassToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#JFK/UMassToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant"> 
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property> 
+					<object-uri>http://greco.ppgi.ufrj.br/resource#JFK/UMassToAlewife</object-uri> 
+				</object-property> 
+			</object-properties> 
+		</resource>
+		<resource id="114" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#North Quincy</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>North Quincy</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointNorth Quincy</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#North QuincyToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#North QuincyToAlewife</object-uri>	
 				</object-property>
 			</object-properties> 
-			
 		</resource>
-		
-		<resource id="5" type="dynamic">
-			<uri>http://greco.ppgi.ufrj.br/resource/AcidenteDeTrabalho#</uri>
-			<rdf-type>http://pt.dbpedia.org/page/Comunica%C3%A7%C3%A3o_de_Acidente_de_Trabalho</rdf-type>
-			
+		<resource id="115" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Wollaston</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Wollaston</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointWollaston</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#WollastonToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#WollastonToAlewife</object-uri>	
+				</object-property>
+			</object-properties> 
+		</resource>
+		<resource id="116" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Quincy Center</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Quincy Center</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointQuincy Center</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Quincy CenterToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Quincy CenterToAlewife</object-uri>	
+				</object-property>
+			</object-properties> 
+		</resource>
+		<resource id="117" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Quincy Adams</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Quincy Adams</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointQuincy Adams</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Quincy AdamsToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Quincy AdamsToAlewife</object-uri>	
+				</object-property>
+			</object-properties> 
+		</resource>
+		<resource id="118" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Braintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Braintree</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#BraintreeToBraintree</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#BraintreeToAlewife</object-uri>	
+				</object-property>
+			</object-properties> 
+		</resource>
+		<resource id="119" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Savin Hill</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Savin Hill</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointSavin Hill</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Savin HillToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Savin HillToAlewife</object-uri>	
+				</object-property>
+			</object-properties> 
+		</resource>
+		<resource id="120" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Fields Corner</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Fields Corner</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointFields Corner</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Fields CornerToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Fields CornerToAlewife</object-uri>	
+				</object-property>
+			</object-properties> 
+		</resource>
+		<resource id="121" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Shawmut</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Shawmut</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointShawmut</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#ShawmutToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#ShawmutToAlewife</object-uri>	
+				</object-property>
+			</object-properties> 
+		</resource>
+		<resource id="122" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Ashmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Ashmont</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#AshmontToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#AshmontToAlewife</object-uri>	
+				</object-property>
+			</object-properties> 
+		</resource>
+		<resource id="123" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Cedar Grove</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Cedar Grove</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointCedar Grove</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Cedar GroveToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Cedar GroveToMattapan</object-uri>	
+				</object-property>
+			</object-properties> 
+		</resource>
+		<resource id="124" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Butler</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Butler</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointButler</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#ButlerToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#ButlerToMattapan</object-uri>	
+				</object-property>
+			</object-properties> 
+		</resource>
+		<resource id="125" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Milton</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Milton</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointMilton</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#MiltonToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#MiltonToMattapan</object-uri>	
+				</object-property>
+			</object-properties> 
+		</resource>
+		<resource id="126" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Central Avenue</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Central Avenue</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointCentral Avenue</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Central AvenueToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Central AvenueToMattapan</object-uri>	
+				</object-property>
+			</object-properties> 
+		</resource>
+		<resource id="127" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Valley Road</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Valley Road</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointValley Road</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Valley RoadToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Valley RoadToMattapan</object-uri>	
+				</object-property>
+			</object-properties> 
+		</resource>
+		<resource id="128" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Capen Street</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Capen Street</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointCapen Street</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Capen StreetToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#Capen StreetToMattapan</object-uri>	
+				</object-property>
+			</object-properties> 
+		</resource>
+		<resource id="129" type="static">
+			<uri>http://greco.ppgi.ufrj.br/resource#Mattapan</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Stop</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>Mattapan</value>
+					<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasName</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#location</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#PointMattapan</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#MattapanToAshmont</object-uri>	
+				</object-property>
+				<object-property type="dominant">
+					<property>http://greco.ppgi.ufrj/ontology/properties#hasDirection</property>
+					<object-uri>http://greco.ppgi.ufrj.br/resource#MattapanToMattapan</object-uri>	
+				</object-property>
+			</object-properties> 
+		</resource>
+
+
+<!-- ****************************************************-DIREÇÕES-**************************************************** #################### -->
+		<resource id="201" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#AlewifeToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
 			<static-literals>
 			</static-literals>
-			
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
 			<dynamic-literals>
-				<dynamic-literal service-id="2">
-					<group>//registro[municipio[@uf="RJ"]]</group>
- 					<literal>
-						<value><![CDATA[municipio/text()]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temNomeMunicipio</parent-property>
-					</literal>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Alewife,destination/Ashmont</group>
 					<literal>
-						<value><![CDATA[municipio/@cod_ibge]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temCodigoMunicipioIBGE</parent-property>
-					</literal>
-					<literal>
-						<value><![CDATA[quantidade/sem_cat/text()]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temQtdAcidentesSemCat</parent-property>
-					</literal>
-					<literal>
-						<value><![CDATA[quantidade/com_cat/tipicos/text()]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temQtdAcidenteComCatTipicos</parent-property>
-					</literal>
-					<literal>
-						<value><![CDATA[quantidade/com_cat/trajeto/text()]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temQtdAcidenteComCatTrajeto</parent-property>
-					</literal>
-					<literal>
-						<value><![CDATA[quantidade/com_cat/doenca/text()]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temQtdAcidenteComCatDoenca</parent-property>
-					</literal>
-					<literal>
-						<value><![CDATA[quantidade/obitos/text()]]></value>
-						<parent-property>http://greco.ppgi.ufrj/ontology/properties#temQtdObito</parent-property>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
 					</literal>
 				</dynamic-literal>
 			</dynamic-literals>
-			
 			<object-properties>
-				<object-property type="nondominant">
-					<property>http://greco.ppgi.ufrj/ontology/properties#temEstado</property>
-					<object-uri>http://greco.ppgi.ufrj.br/resource#RioDeJaneiro</object-uri>
-				</object-property>
-			</object-properties>
+			</object-properties> 
 		</resource>
+		<resource id="301" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#AlewifeToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Alewife,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="**NUMEORO2**" type="static" separator-char="," with-header="true"> 
+			<uri>http://greco.ppgi.ufrj.br/resource#AlewifeToAlewife</uri> 
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type> 
+			<static-literals> 
+			</static-literals> 
+			<headers> 
+				<header><index>4</index> <name>destination</name></header> 
+				<header><index>6</index> <name>stop</name></header> 
+				<header><index>7</index> <name>secondsAway</name></header> 
+			</headers> 
+			<dynamic-literals> 
+				<dynamic-literal service-id="1" type="unique"> 
+					<group>stop/Alewife,destination/Alewife</group> 
+					<literal> 
+						<value><![CDATA[secondsAway]]></value> 
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property> 
+					</literal> 
+				</dynamic-literal> 
+			</dynamic-literals> 
+			<object-properties> 
+			</object-properties> 
+		</resource> 
+		<resource id="202" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#DavisToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Davis,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="302" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#DavisToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Davis,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="**NUMEORO2**" type="static" separator-char="," with-header="true"> 
+			<uri>http://greco.ppgi.ufrj.br/resource#DavisToAlewife</uri> 
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type> 
+			<static-literals> 
+			</static-literals> 
+			<headers> 
+				<header><index>4</index> <name>destination</name></header> 
+				<header><index>6</index> <name>stop</name></header> 
+				<header><index>7</index> <name>secondsAway</name></header> 
+			</headers> 
+			<dynamic-literals> 
+				<dynamic-literal service-id="1" type="unique"> 
+					<group>stop/Davis,destination/Alewife</group> 
+					<literal> 
+						<value><![CDATA[secondsAway]]></value> 
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property> 
+					</literal> 
+				</dynamic-literal> 
+			</dynamic-literals> 
+			<object-properties> 
+			</object-properties> 
+		</resource> 
+		<resource id="203" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Porter SquareToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Porter Square,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="303" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Porter SquareToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Porter Square,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="**NUMEORO2**" type="static" separator-char="," with-header="true"> 
+			<uri>http://greco.ppgi.ufrj.br/resource#Porter SquareToAlewife</uri> 
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type> 
+			<static-literals> 
+			</static-literals> 
+			<headers> 
+				<header><index>4</index> <name>destination</name></header> 
+				<header><index>6</index> <name>stop</name></header> 
+				<header><index>7</index> <name>secondsAway</name></header> 
+			</headers> 
+			<dynamic-literals> 
+				<dynamic-literal service-id="1" type="unique"> 
+					<group>stop/Porter Square,destination/Alewife</group> 
+					<literal> 
+						<value><![CDATA[secondsAway]]></value> 
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property> 
+					</literal> 
+				</dynamic-literal> 
+			</dynamic-literals> 
+			<object-properties> 
+			</object-properties> 
+		</resource> 
+		<resource id="204" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Harvard SquareToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Harvard Square,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="304" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Harvard SquareToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Harvard Square,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="**NUMEORO2**" type="static" separator-char="," with-header="true"> 
+			<uri>http://greco.ppgi.ufrj.br/resource#Harvard SquareToAlewife</uri> 
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type> 
+			<static-literals> 
+			</static-literals> 
+			<headers> 
+				<header><index>4</index> <name>destination</name></header> 
+				<header><index>6</index> <name>stop</name></header> 
+				<header><index>7</index> <name>secondsAway</name></header> 
+			</headers> 
+			<dynamic-literals> 
+				<dynamic-literal service-id="1" type="unique"> 
+					<group>stop/Harvard Square,destination/Alewife</group> 
+					<literal> 
+						<value><![CDATA[secondsAway]]></value> 
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property> 
+					</literal> 
+				</dynamic-literal> 
+			</dynamic-literals> 
+			<object-properties> 
+			</object-properties> 
+		</resource> 
+		<resource id="205" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Central SquareToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Central Square,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="305" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Central SquareToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Central Square,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="**NUMEORO2**" type="static" separator-char="," with-header="true"> 
+			<uri>http://greco.ppgi.ufrj.br/resource#Central SquareToAlewife</uri> 
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type> 
+			<static-literals> 
+			</static-literals> 
+			<headers> 
+				<header><index>4</index> <name>destination</name></header> 
+				<header><index>6</index> <name>stop</name></header> 
+				<header><index>7</index> <name>secondsAway</name></header> 
+			</headers> 
+			<dynamic-literals> 
+				<dynamic-literal service-id="1" type="unique"> 
+					<group>stop/Central Square,destination/Alewife</group> 
+					<literal> 
+						<value><![CDATA[secondsAway]]></value> 
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property> 
+					</literal> 
+				</dynamic-literal> 
+			</dynamic-literals> 
+			<object-properties> 
+			</object-properties> 
+		</resource> 
+		<resource id="206" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#KendallToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Kendall,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="306" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#KendallToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Kendall,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="**NUMEORO2**" type="static" separator-char="," with-header="true"> 
+			<uri>http://greco.ppgi.ufrj.br/resource#KendallToAlewife</uri> 
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type> 
+			<static-literals> 
+			</static-literals> 
+			<headers> 
+				<header><index>4</index> <name>destination</name></header> 
+				<header><index>6</index> <name>stop</name></header> 
+				<header><index>7</index> <name>secondsAway</name></header> 
+			</headers> 
+			<dynamic-literals> 
+				<dynamic-literal service-id="1" type="unique"> 
+					<group>stop/Kendall,destination/Alewife</group> 
+					<literal> 
+						<value><![CDATA[secondsAway]]></value> 
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property> 
+					</literal> 
+				</dynamic-literal> 
+			</dynamic-literals> 
+			<object-properties> 
+			</object-properties> 
+		</resource> 
+		<resource id="207" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Charles/MGHToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Charles/MGH,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="307" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Charles/MGHToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Charles/MGH,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="**NUMEORO2**" type="static" separator-char="," with-header="true"> 
+			<uri>http://greco.ppgi.ufrj.br/resource#Charles/MGHToAlewife</uri> 
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type> 
+			<static-literals> 
+			</static-literals> 
+			<headers> 
+				<header><index>4</index> <name>destination</name></header> 
+				<header><index>6</index> <name>stop</name></header> 
+				<header><index>7</index> <name>secondsAway</name></header> 
+			</headers> 
+			<dynamic-literals> 
+				<dynamic-literal service-id="1" type="unique"> 
+					<group>stop/Charles/MGH,destination/Alewife</group> 
+					<literal> 
+						<value><![CDATA[secondsAway]]></value> 
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property> 
+					</literal> 
+				</dynamic-literal> 
+			</dynamic-literals> 
+			<object-properties> 
+			</object-properties> 
+		</resource> 
+		<resource id="208" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Park StreetToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Park Street,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="308" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Park StreetToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Park Street,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="**NUMEORO2**" type="static" separator-char="," with-header="true"> 
+			<uri>http://greco.ppgi.ufrj.br/resource#Park StreetToAlewife</uri> 
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type> 
+			<static-literals> 
+			</static-literals> 
+			<headers> 
+				<header><index>4</index> <name>destination</name></header> 
+				<header><index>6</index> <name>stop</name></header> 
+				<header><index>7</index> <name>secondsAway</name></header> 
+			</headers> 
+			<dynamic-literals> 
+				<dynamic-literal service-id="1" type="unique"> 
+					<group>stop/Park Street,destination/Alewife</group> 
+					<literal> 
+						<value><![CDATA[secondsAway]]></value> 
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property> 
+					</literal> 
+				</dynamic-literal> 
+			</dynamic-literals> 
+			<object-properties> 
+			</object-properties> 
+		</resource> 
+		<resource id="209" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Downtown CrossingToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Downtown Crossing,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="309" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Downtown CrossingToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Downtown Crossing,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="**NUMEORO2**" type="static" separator-char="," with-header="true"> 
+			<uri>http://greco.ppgi.ufrj.br/resource#Downtown CrossingToAlewife</uri> 
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type> 
+			<static-literals> 
+			</static-literals> 
+			<headers> 
+				<header><index>4</index> <name>destination</name></header> 
+				<header><index>6</index> <name>stop</name></header> 
+				<header><index>7</index> <name>secondsAway</name></header> 
+			</headers> 
+			<dynamic-literals> 
+				<dynamic-literal service-id="1" type="unique"> 
+					<group>stop/Downtown Crossing,destination/Alewife</group> 
+					<literal> 
+						<value><![CDATA[secondsAway]]></value> 
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property> 
+					</literal> 
+				</dynamic-literal> 
+			</dynamic-literals> 
+			<object-properties> 
+			</object-properties> 
+		</resource> 
+		<resource id="210" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#SouthToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/South,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="310" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#SouthToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/South,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="**NUMEORO2**" type="static" separator-char="," with-header="true"> 
+			<uri>http://greco.ppgi.ufrj.br/resource#SouthToAlewife</uri> 
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type> 
+			<static-literals> 
+			</static-literals> 
+			<headers> 
+				<header><index>4</index> <name>destination</name></header> 
+				<header><index>6</index> <name>stop</name></header> 
+				<header><index>7</index> <name>secondsAway</name></header> 
+			</headers> 
+			<dynamic-literals> 
+				<dynamic-literal service-id="1" type="unique"> 
+					<group>stop/South,destination/Alewife</group> 
+					<literal> 
+						<value><![CDATA[secondsAway]]></value> 
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property> 
+					</literal> 
+				</dynamic-literal> 
+			</dynamic-literals> 
+			<object-properties> 
+			</object-properties> 
+		</resource> 
+		<resource id="211" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#BroadwayToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Broadway,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="311" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#BroadwayToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Broadway,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="**NUMEORO2**" type="static" separator-char="," with-header="true"> 
+			<uri>http://greco.ppgi.ufrj.br/resource#BroadwayToAlewife</uri> 
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type> 
+			<static-literals> 
+			</static-literals> 
+			<headers> 
+				<header><index>4</index> <name>destination</name></header> 
+				<header><index>6</index> <name>stop</name></header> 
+				<header><index>7</index> <name>secondsAway</name></header> 
+			</headers> 
+			<dynamic-literals> 
+				<dynamic-literal service-id="1" type="unique"> 
+					<group>stop/Broadway,destination/Alewife</group> 
+					<literal> 
+						<value><![CDATA[secondsAway]]></value> 
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property> 
+					</literal> 
+				</dynamic-literal> 
+			</dynamic-literals> 
+			<object-properties> 
+			</object-properties> 
+		</resource> 
+		<resource id="212" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#AndrewToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Andrew,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="312" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#AndrewToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Andrew,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="**NUMEORO2**" type="static" separator-char="," with-header="true"> 
+			<uri>http://greco.ppgi.ufrj.br/resource#AndrewToAlewife</uri> 
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type> 
+			<static-literals> 
+			</static-literals> 
+			<headers> 
+				<header><index>4</index> <name>destination</name></header> 
+				<header><index>6</index> <name>stop</name></header> 
+				<header><index>7</index> <name>secondsAway</name></header> 
+			</headers> 
+			<dynamic-literals> 
+				<dynamic-literal service-id="1" type="unique"> 
+					<group>stop/Andrew,destination/Alewife</group> 
+					<literal> 
+						<value><![CDATA[secondsAway]]></value> 
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property> 
+					</literal> 
+				</dynamic-literal> 
+			</dynamic-literals> 
+			<object-properties> 
+			</object-properties> 
+		</resource> 
+		<resource id="213" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#JFK/UMassToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/JFK/UMass,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="313" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#JFK/UMassToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/JFK/UMass,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="**NUMEORO2**" type="static" separator-char="," with-header="true"> 
+			<uri>http://greco.ppgi.ufrj.br/resource#JFK/UMassToAlewife</uri> 
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type> 
+			<static-literals> 
+			</static-literals> 
+			<headers> 
+				<header><index>4</index> <name>destination</name></header> 
+				<header><index>6</index> <name>stop</name></header> 
+				<header><index>7</index> <name>secondsAway</name></header> 
+			</headers> 
+			<dynamic-literals> 
+				<dynamic-literal service-id="1" type="unique"> 
+					<group>stop/JFK/UMass,destination/Alewife</group> 
+					<literal> 
+						<value><![CDATA[secondsAway]]></value> 
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property> 
+					</literal> 
+				</dynamic-literal> 
+			</dynamic-literals> 
+			<object-properties> 
+			</object-properties> 
+		</resource> 
+		<resource id="214" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#North QuincyToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/North Quincy,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="314" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#North QuincyToAlewife</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/North Quincy,destination/Alewife</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="215" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#WollastonToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Wollaston,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="315" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#WollastonToAlewife</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Wollaston,destination/Alewife</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="216" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Quincy CenterToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Quincy Center,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="316" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Quincy CenterToAlewife</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Quincy Center,destination/Alewife</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="217" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Quincy AdamsToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Quincy Adams,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="317" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Quincy AdamsToAlewife</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Quincy Adams,destination/Alewife</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="218" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#BraintreeToBraintree</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Braintree,destination/Braintree</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="318" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#BraintreeToAlewife</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Braintree,destination/Alewife</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="219" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Savin HillToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Savin Hill,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="319" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Savin HillToAlewife</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Savin Hill,destination/Alewife</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="220" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Fields CornerToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Fields Corner,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="320" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Fields CornerToAlewife</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Fields Corner,destination/Alewife</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="221" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#ShawmutToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Shawmut,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="321" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#ShawmutToAlewife</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Shawmut,destination/Alewife</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="222" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#AshmontToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Ashmont,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="322" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#AshmontToAlewife</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Ashmont,destination/Alewife</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="223" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Cedar GroveToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Cedar Grove,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="323" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Cedar GroveToMattapan</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Cedar Grove,destination/Mattapan</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="224" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#ButlerToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Butler,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="324" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#ButlerToMattapan</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Butler,destination/Mattapan</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="225" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#MiltonToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Milton,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="325" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#MiltonToMattapan</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Milton,destination/Mattapan</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="226" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Central AvenueToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Central Avenue,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="326" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Central AvenueToMattapan</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Central Avenue,destination/Mattapan</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="227" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Valley RoadToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Valley Road,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="327" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Valley RoadToMattapan</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Valley Road,destination/Mattapan</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="228" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Capen StreetToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Capen Street,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="328" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#Capen StreetToMattapan</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Capen Street,destination/Mattapan</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="229" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#MattapanToAshmont</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Mattapan,destination/Ashmont</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+		<resource id="329" type="static" separator-char="," with-header="true">
+			<uri>http://greco.ppgi.ufrj.br/resource#MattapanToMattapan</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Direction</rdf-type>
+			<static-literals>
+			</static-literals>
+			<headers>
+				<header><index>4</index> <name>destination</name></header>
+				<header><index>6</index> <name>stop</name></header>
+				<header><index>7</index> <name>secondsAway</name></header>
+			</headers>
+			<dynamic-literals>
+				<dynamic-literal service-id="1" type="unique">
+					<group>stop/Mattapan,destination/Mattapan</group>
+					<literal>
+						<value><![CDATA[secondsAway]]></value>
+						<parent-property>http://greco.ppgi.ufrj/ontology/properties#hasSecondsAway</parent-property>
+					</literal>
+				</dynamic-literal>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
+
+<!-- ****************************************************-FIM!!!-****************************************************** #################### -->
 	</resources>
 </config>

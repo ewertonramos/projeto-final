@@ -1,0 +1,18 @@
+		<resource id="**NUMERO**" type="static" >
+			<uri>http://greco.ppgi.ufrj.br/resource#Point**ESTACAO**</uri>
+			<rdf-type>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#Point</rdf-type>
+			<static-literals>
+				<static-literal>
+					<value>XXXX</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#latitude</parent-property>
+				</static-literal>
+				<static-literal>
+					<value>YYYY</value>
+					<parent-property>http://greco.ppgi.ufrj.br/ontology/concepts/transit_extended#longitude</parent-property>
+				</static-literal>
+			</static-literals>
+			<dynamic-literals>
+			</dynamic-literals>
+			<object-properties>
+			</object-properties> 
+		</resource>
